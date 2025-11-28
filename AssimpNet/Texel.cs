@@ -36,16 +36,6 @@ namespace Assimp
     [StructLayout(LayoutKind.Sequential)]
     public record struct Texel(byte B, byte G, byte R, byte A)
     {
-        /// <summary>
-        /// Tests inequality between two texels.
-        /// </summary>
-        /// <param name="a">First texel</param>
-        /// <param name="b">Second texel</param>
-        /// <returns>True if the texels are not equal, false otherwise.</returns>
-        public static bool operator !=(Texel a, Texel b)
-        {
-            return (a.B != b.B) && (a.G != b.G) && (a.R != b.R) && (a.A != b.A);
-        }
 
         /// <summary>
         /// Implicitly converts a texel to a Color4D.
@@ -55,22 +45,6 @@ namespace Assimp
         public static implicit operator Color4D(Texel texel)
         {
             return new Color4D(texel.R / 255.0f, texel.G / 255.0f, texel.B / 255.0f, texel.A / 255.0f);
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object obj)
-        {
-            if(obj is Texel)
-            {
-                return Equals((Texel) obj);
-            }
-            return false;
         }
 
         /// <summary>

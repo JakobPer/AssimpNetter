@@ -21,6 +21,7 @@
 */
 
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Assimp.Test
 {
@@ -53,20 +54,20 @@ namespace Assimp.Test
             Color4D c3 = new Color4D(r2, g2, b2, a2);
 
             //Test IEquatable Equals
-            Assert.IsTrue(c1.Equals(c2), "Test IEquatable equals");
-            Assert.IsFalse(c1.Equals(c3), "Test IEquatable equals");
+            ClassicAssert.IsTrue(c1.Equals(c2), "Test IEquatable equals");
+            ClassicAssert.IsFalse(c1.Equals(c3), "Test IEquatable equals");
 
             //Test object equals override
-            Assert.IsTrue(c1.Equals((object) c2), "Tests object equals");
-            Assert.IsFalse(c1.Equals((object) c3), "Tests object equals");
+            ClassicAssert.IsTrue(c1.Equals((object)c2), "Tests object equals");
+            ClassicAssert.IsFalse(c1.Equals((object)c3), "Tests object equals");
 
             //Test op equals
-            Assert.IsTrue(c1 == c2, "Testing OpEquals");
-            Assert.IsFalse(c1 == c3, "Testing OpEquals");
+            ClassicAssert.IsTrue(c1 == c2, "Testing OpEquals");
+            ClassicAssert.IsFalse(c1 == c3, "Testing OpEquals");
 
             //Test op not equals
-            Assert.IsTrue(c1 != c3, "Testing OpNotEquals");
-            Assert.IsFalse(c1 != c2, "Testing OpNotEquals");
+            ClassicAssert.IsTrue(c1 != c3, "Testing OpNotEquals");
+            ClassicAssert.IsFalse(c1 != c2, "Testing OpNotEquals");
         }
 
         [Test]
@@ -76,9 +77,9 @@ namespace Assimp.Test
             Color4D c2 = new Color4D(.25f, 1.0f, .5f, 1.0f) * .002f;
             Color4D c3 = new Color4D(.25f, .65f, 1.0f);
 
-            Assert.IsTrue(c1.IsBlack(), "Testing isBlack");
-            Assert.IsTrue(c2.IsBlack(), "Testing isBlack");
-            Assert.IsFalse(c3.IsBlack(), "Testing !isBlack");
+            ClassicAssert.IsTrue(c1.IsBlack(), "Testing isBlack");
+            ClassicAssert.IsTrue(c2.IsBlack(), "Testing isBlack");
+            ClassicAssert.IsFalse(c3.IsBlack(), "Testing !isBlack");
         }
 
         [Test]

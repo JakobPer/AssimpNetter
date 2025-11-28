@@ -20,8 +20,9 @@
 * THE SOFTWARE.
 */
 
-using System;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
+using System;
 using TK = OpenTK;
 
 namespace Assimp.Test
@@ -35,9 +36,9 @@ namespace Assimp.Test
             float[] values = new float[] { 1.0f, 2.0f, 3.0f, 5.0f, 0.0f, -5.0f, .5f, 100.25f, .3f, .35f, .025f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
 
             Matrix4x4 m = Matrix4x4.Identity;
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                for(int j = 0; j < 4; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     float value = values[(i * 4) + j];
                     //Matrix indices are one-based.
@@ -55,20 +56,20 @@ namespace Assimp.Test
             Matrix4x4 m3 = new Matrix4x4(0.0f, 2.0f, 25.0f, 5.0f, 1.0f, 5.0f, 5.5f, 100.25f, 1.25f, 8.5f, 2.25f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 
             //Test IEquatable Equals
-            Assert.IsTrue(m1.Equals(m2), "Test IEquatable equals");
-            Assert.IsFalse(m1.Equals(m3), "Test IEquatable equals");
+            ClassicAssert.IsTrue(m1.Equals(m2), "Test IEquatable equals");
+            ClassicAssert.IsFalse(m1.Equals(m3), "Test IEquatable equals");
 
             //Test object equals override
-            Assert.IsTrue(m1.Equals((object) m2), "Tests object equals");
-            Assert.IsFalse(m1.Equals((object) m3), "Tests object equals");
+            ClassicAssert.IsTrue(m1.Equals((object)m2), "Tests object equals");
+            ClassicAssert.IsFalse(m1.Equals((object)m3), "Tests object equals");
 
             //Test op equals
-            Assert.IsTrue(m1 == m2, "Testing OpEquals");
-            Assert.IsFalse(m1 == m3, "Testing OpEquals");
+            ClassicAssert.IsTrue(m1 == m2, "Testing OpEquals");
+            ClassicAssert.IsFalse(m1 == m3, "Testing OpEquals");
 
             //Test op not equals
-            Assert.IsTrue(m1 != m3, "Testing OpNotEquals");
-            Assert.IsFalse(m1 != m2, "Testing OpNotEquals");
+            ClassicAssert.IsTrue(m1 != m3, "Testing OpNotEquals");
+            ClassicAssert.IsFalse(m1 != m2, "Testing OpNotEquals");
         }
 
         [Test]
@@ -143,7 +144,7 @@ namespace Assimp.Test
             Matrix4x4 m2 = Matrix4x4.FromEulerAnglesXYZ(new Vector3D(x, y, z));
 
             TestHelper.AssertEquals(tkM, m, "Testing create from euler angles");
-            Assert.IsTrue(m == m2, "Testing if create from euler angle as a vector is the same as floats.");
+            ClassicAssert.IsTrue(m == m2, "Testing if create from euler angle as a vector is the same as floats.");
         }
 
         [Test]
@@ -238,7 +239,7 @@ namespace Assimp.Test
             TK.Matrix4 tkM = TK.Matrix4.Identity;
             Matrix4x4 m = Matrix4x4.Identity;
 
-            Assert.IsTrue(m.IsIdentity, "Testing IsIdentity");
+            ClassicAssert.IsTrue(m.IsIdentity, "Testing IsIdentity");
             TestHelper.AssertEquals(tkM, m, "Testing is identity to baseline");
         }
 

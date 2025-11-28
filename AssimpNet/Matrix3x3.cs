@@ -82,10 +82,10 @@ namespace Assimp
         {
             get
             {
-                switch(i)
+                switch (i)
                 {
                     case 1:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 return A1;
@@ -97,7 +97,7 @@ namespace Assimp
                                 return 0;
                         }
                     case 2:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 return B1;
@@ -109,7 +109,7 @@ namespace Assimp
                                 return 0;
                         }
                     case 3:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 return C1;
@@ -126,10 +126,10 @@ namespace Assimp
             }
             set
             {
-                switch(i)
+                switch (i)
                 {
                     case 1:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 A1 = value;
@@ -143,7 +143,7 @@ namespace Assimp
                         }
                         break;
                     case 2:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 B1 = value;
@@ -157,7 +157,7 @@ namespace Assimp
                         }
                         break;
                     case 3:
-                        switch(j)
+                        switch (j)
                         {
                             case 1:
                                 C1 = value;
@@ -178,19 +178,12 @@ namespace Assimp
         /// Constructs a new Matrix3x3.
         /// </summary>
         /// <param name="rotMatrix">A 4x4 matrix to construct from, only taking the rotation/scaling part.</param>
-        public Matrix3x3(Matrix4x4 rotMatrix)
+        public Matrix3x3(Matrix4x4 rotMatrix) : this(
+            rotMatrix.A1, rotMatrix.A2, rotMatrix.A3,
+            rotMatrix.B1, rotMatrix.B2, rotMatrix.B3,
+            rotMatrix.C1, rotMatrix.C2, rotMatrix.C3
+            )
         {
-            this.A1 = rotMatrix.A1;
-            this.A2 = rotMatrix.A2;
-            this.A3 = rotMatrix.A3;
-
-            this.B1 = rotMatrix.B1;
-            this.B2 = rotMatrix.B2;
-            this.B3 = rotMatrix.B3;
-
-            this.C1 = rotMatrix.C1;
-            this.C2 = rotMatrix.C2;
-            this.C3 = rotMatrix.C3;
         }
 
         /// <summary>
@@ -216,7 +209,7 @@ namespace Assimp
         public void Inverse()
         {
             float det = Determinant();
-            if(det == 0.0f)
+            if (det == 0.0f)
             {
                 // Matrix is not invertible. Setting all elements to NaN is not really
                 // correct in a mathematical sense, but it is easy to debug for the
@@ -276,12 +269,12 @@ namespace Assimp
         /// <returns>The rotation matrix</returns>
         public static Matrix3x3 FromEulerAnglesXYZ(float x, float y, float z)
         {
-            float cr = (float) Math.Cos(x);
-            float sr = (float) Math.Sin(x);
-            float cp = (float) Math.Cos(y);
-            float sp = (float) Math.Sin(y);
-            float cy = (float) Math.Cos(z);
-            float sy = (float) Math.Sin(z);
+            float cr = (float)Math.Cos(x);
+            float sr = (float)Math.Sin(x);
+            float cp = (float)Math.Cos(y);
+            float sp = (float)Math.Sin(y);
+            float cy = (float)Math.Cos(z);
+            float sy = (float)Math.Sin(z);
 
             float srsp = sr * sp;
             float crsp = cr * sp;
@@ -325,8 +318,8 @@ namespace Assimp
                  |  0  sin(A)  cos(A) |	
             */
             Matrix3x3 m = Identity;
-            m.B2 = m.C3 = (float) Math.Cos(radians);
-            m.C2 = (float) Math.Sin(radians);
+            m.B2 = m.C3 = (float)Math.Cos(radians);
+            m.C2 = (float)Math.Sin(radians);
             m.B3 = -m.C2;
             return m;
         }
@@ -344,8 +337,8 @@ namespace Assimp
                  | -sin(A)  0   cos(A) |
             */
             Matrix3x3 m = Identity;
-            m.A1 = m.C3 = (float) Math.Cos(radians);
-            m.A3 = (float) Math.Sin(radians);
+            m.A1 = m.C3 = (float)Math.Cos(radians);
+            m.A3 = (float)Math.Sin(radians);
             m.C1 = -m.A3;
             return m;
         }
@@ -363,8 +356,8 @@ namespace Assimp
                  |  0        0        1 |
              */
             Matrix3x3 m = Identity;
-            m.A1 = m.B2 = (float) Math.Cos(radians);
-            m.B1 = (float) Math.Sin(radians);
+            m.A1 = m.B2 = (float)Math.Cos(radians);
+            m.B1 = (float)Math.Sin(radians);
             m.A2 = -m.B1;
             return m;
         }
@@ -381,8 +374,8 @@ namespace Assimp
             float y = axis.Y;
             float z = axis.Z;
 
-            float sin = (float) System.Math.Sin((double) radians);
-            float cos = (float) System.Math.Cos((double) radians);
+            float sin = (float)System.Math.Sin((double)radians);
+            float cos = (float)System.Math.Cos((double)radians);
 
             float xx = x * x;
             float yy = y * y;
@@ -440,7 +433,7 @@ namespace Assimp
             Matrix3x3 m = Identity;
 
             //"from" and "to" vectors almost parallel
-            if(f > 1.0f - 0.00001f)
+            if (f > 1.0f - 0.00001f)
             {
                 Vector3D u, v; //Temp variables
                 Vector3D x; //Vector almost orthogonal to "from"
@@ -449,9 +442,9 @@ namespace Assimp
                 x.Y = (from.Y > 0.0f) ? from.Y : -from.Y;
                 x.Z = (from.Z > 0.0f) ? from.Z : -from.Z;
 
-                if(x.X < x.Y)
+                if (x.X < x.Y)
                 {
-                    if(x.X < x.Z)
+                    if (x.X < x.Z)
                     {
                         x.X = 1.0f;
                         x.Y = 0.0f;
@@ -466,7 +459,7 @@ namespace Assimp
                 }
                 else
                 {
-                    if(x.Y < x.Z)
+                    if (x.Y < x.Z)
                     {
                         x.X = 0.0f;
                         x.Y = 1.0f;
@@ -492,9 +485,9 @@ namespace Assimp
                 float c2 = 2.0f / Vector3D.Dot(v, v);
                 float c3 = c1 * c2 * Vector3D.Dot(u, v);
 
-                for(int i = 1; i < 4; i++)
+                for (int i = 1; i < 4; i++)
                 {
-                    for(int j = 1; j < 4; j++)
+                    for (int j = 1; j < 4; j++)
                     {
                         //This is somewhat unreadable, but the indices for u, v vectors are "zero-based" while
                         //matrix indices are "one-based" always subtract by one to index those
@@ -538,7 +531,7 @@ namespace Assimp
         /// </summary>
         /// <param name="v">Vector to transform</param>
         /// <returns>Transformed vector</returns>
-        public Vector3 Transform(Vector3 v) =>
+        public Vector3D Transform(Vector3D v) =>
             new(
                 A1 * v.X + A2 * v.Y + A3 * v.Z,
                 B1 * v.X + B2 * v.Y + B3 * v.Z,
@@ -572,7 +565,7 @@ namespace Assimp
         /// <returns>3x3 matrix</returns>
         public static implicit operator Matrix3x3(Matrix4x4 mat)
         {
-            Matrix3x3 m;
+            Matrix3x3 m = new();
             m.A1 = mat.A1;
             m.A2 = mat.A2;
             m.A3 = mat.A3;

@@ -21,6 +21,7 @@
 */
 
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using TK = OpenTK;
 
 namespace Assimp.Test
@@ -36,20 +37,20 @@ namespace Assimp.Test
             Quaternion q3 = new Quaternion(.55f, .17f, 1.0f, .15f);
 
             //Test IEquatable Equals
-            Assert.IsTrue(q1.Equals(q2), "Test IEquatable equals");
-            Assert.IsFalse(q1.Equals(q3), "Test IEquatable equals");
+            ClassicAssert.IsTrue(q1.Equals(q2), "Test IEquatable equals");
+            ClassicAssert.IsFalse(q1.Equals(q3), "Test IEquatable equals");
 
             //Test object equals override
-            Assert.IsTrue(q1.Equals((object) q2), "Tests object equals");
-            Assert.IsFalse(q1.Equals((object) q3), "Tests object equals");
+            ClassicAssert.IsTrue(q1.Equals((object)q2), "Tests object equals");
+            ClassicAssert.IsFalse(q1.Equals((object)q3), "Tests object equals");
 
             //Test op equals
-            Assert.IsTrue(q1 == q2, "Testing OpEquals");
-            Assert.IsFalse(q1 == q3, "Testing OpEquals");
+            ClassicAssert.IsTrue(q1 == q2, "Testing OpEquals");
+            ClassicAssert.IsFalse(q1 == q3, "Testing OpEquals");
 
             //Test op not equals
-            Assert.IsTrue(q1 != q3, "Testing OpNotEquals");
-            Assert.IsFalse(q1 != q2, "Testing OpNotEquals");
+            ClassicAssert.IsTrue(q1 != q3, "Testing OpNotEquals");
+            ClassicAssert.IsFalse(q1 != q2, "Testing OpNotEquals");
         }
 
         [Test]

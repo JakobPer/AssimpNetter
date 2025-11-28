@@ -75,25 +75,25 @@ namespace Assimp
         {
             float trace = matrix.A1 + matrix.B2 + matrix.C3;
 
-            if(trace > 0)
+            if (trace > 0)
             {
-                float s = (float) Math.Sqrt(trace + 1.0f) * 2.0f;
+                float s = (float)Math.Sqrt(trace + 1.0f) * 2.0f;
                 W = .25f * s;
                 X = (matrix.C2 - matrix.B3) / s;
                 Y = (matrix.A3 - matrix.C1) / s;
                 Z = (matrix.B1 - matrix.A2) / s;
             }
-            else if((matrix.A1 > matrix.B2) && (matrix.A1 > matrix.C3))
+            else if ((matrix.A1 > matrix.B2) && (matrix.A1 > matrix.C3))
             {
-                float s = (float) Math.Sqrt(((1.0 + matrix.A1) - matrix.B2) - matrix.C3) * 2.0f;
+                float s = (float)Math.Sqrt(((1.0 + matrix.A1) - matrix.B2) - matrix.C3) * 2.0f;
                 W = (matrix.C2 - matrix.B3) / s;
                 X = .25f * s;
                 Y = (matrix.A2 + matrix.B1) / s;
                 Z = (matrix.A3 + matrix.C1) / s;
             }
-            else if(matrix.B2 > matrix.C3)
+            else if (matrix.B2 > matrix.C3)
             {
-                float s = (float) Math.Sqrt(((1.0f + matrix.B2) - matrix.A1) - matrix.C3) * 2.0f;
+                float s = (float)Math.Sqrt(((1.0f + matrix.B2) - matrix.A1) - matrix.C3) * 2.0f;
                 W = (matrix.A3 - matrix.C1) / s;
                 X = (matrix.A2 + matrix.B1) / s;
                 Y = .25f * s;
@@ -101,7 +101,7 @@ namespace Assimp
             }
             else
             {
-                float s = (float) Math.Sqrt(((1.0f + matrix.C3) - matrix.A1) - matrix.B2) * 2.0f;
+                float s = (float)Math.Sqrt(((1.0f + matrix.C3) - matrix.A1) - matrix.B2) * 2.0f;
                 W = (matrix.B1 - matrix.A2) / s;
                 X = (matrix.A3 + matrix.C1) / s;
                 Y = (matrix.B3 + matrix.C2) / s;
@@ -119,12 +119,12 @@ namespace Assimp
         /// <param name="roll">Roll</param>
         public Quaternion(float pitch, float yaw, float roll)
         {
-            float sinPitch = (float) Math.Sin(pitch * .5f);
-            float cosPitch = (float) Math.Cos(pitch * .5f);
-            float sinYaw = (float) Math.Sin(yaw * .5f);
-            float cosYaw = (float) Math.Cos(yaw * .5f);
-            float sinRoll = (float) Math.Sin(roll * .5f);
-            float cosRoll = (float) Math.Cos(roll * .5f);
+            float sinPitch = (float)Math.Sin(pitch * .5f);
+            float cosPitch = (float)Math.Cos(pitch * .5f);
+            float sinYaw = (float)Math.Sin(yaw * .5f);
+            float cosYaw = (float)Math.Cos(yaw * .5f);
+            float sinRoll = (float)Math.Sin(roll * .5f);
+            float cosRoll = (float)Math.Cos(roll * .5f);
             float cosPitchCosYaw = cosPitch * cosYaw;
             float sinPitchSinYaw = sinPitch * sinYaw;
 
@@ -144,8 +144,8 @@ namespace Assimp
             axis.Normalize();
 
             float halfAngle = angle * .5f;
-            float sin = (float) Math.Sin(halfAngle);
-            float cos = (float) Math.Cos(halfAngle);
+            float sin = (float)Math.Sin(halfAngle);
+            float cos = (float)Math.Cos(halfAngle);
             X = axis.X * sin;
             Y = axis.Y * sin;
             Z = axis.Z * sin;
@@ -158,7 +158,7 @@ namespace Assimp
         public void Normalize()
         {
             float mag = (X * X) + (Y * Y) + (Z * Z) + (W * W);
-            if(mag != 0)
+            if (mag != 0)
             {
                 X /= mag;
                 Y /= mag;
@@ -194,7 +194,7 @@ namespace Assimp
             float yz = Y * Z;
             float xw = X * W;
 
-            Matrix3x3 mat;
+            Matrix3x3 mat = new();
             mat.A1 = 1.0f - (2.0f * (yy + zz));
             mat.B1 = 2.0f * (xy + zw);
             mat.C1 = 2.0f * (zx - yw);
@@ -223,7 +223,7 @@ namespace Assimp
             float cosom = (start.X * end.X) + (start.Y * end.Y) + (start.Z * end.Z) + (start.W * end.W);
 
             //Reverse signs if needed
-            if(cosom < 0.0f)
+            if (cosom < 0.0f)
             {
                 cosom = -cosom;
                 end.X = -end.X;
@@ -235,14 +235,14 @@ namespace Assimp
             //calculate coefficients
             float sclp, sclq;
             //0.0001 -> some episilon
-            if((1.0f - cosom) > 0.0001f)
+            if ((1.0f - cosom) > 0.0001f)
             {
                 //Do a slerp
                 float omega, sinom;
-                omega = (float) Math.Acos(cosom); //extract theta from the product's cos theta
-                sinom = (float) Math.Sin(omega);
-                sclp = (float) Math.Sin((1.0f - factor) * omega) / sinom;
-                sclq = (float) Math.Sin(factor * omega) / sinom;
+                omega = (float)Math.Acos(cosom); //extract theta from the product's cos theta
+                sinom = (float)Math.Sin(omega);
+                sclp = (float)Math.Sin((1.0f - factor) * omega) / sinom;
+                sclq = (float)Math.Sin(factor * omega) / sinom;
             }
             else
             {
@@ -350,9 +350,9 @@ namespace Assimp
         /// <returns>True if the object is a color and the components are equal</returns>
         public override bool Equals(object obj)
         {
-            if(obj is Quaternion)
+            if (obj is Quaternion)
             {
-                return Equals((Quaternion) obj);
+                return Equals((Quaternion)obj);
             }
             return false;
         }

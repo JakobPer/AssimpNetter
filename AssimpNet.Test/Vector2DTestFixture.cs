@@ -20,8 +20,9 @@
 * THE SOFTWARE.
 */
 
-using System;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
+using System;
 
 namespace Assimp.Test
 {
@@ -60,20 +61,20 @@ namespace Assimp.Test
             Vector2D v3 = new Vector2D(x2, y2);
 
             //Test IEquatable Equals
-            Assert.IsTrue(v1.Equals(v2), "Test IEquatable equals");
-            Assert.IsFalse(v1.Equals(v3), "Test IEquatable equals");
+            ClassicAssert.IsTrue(v1.Equals(v2), "Test IEquatable equals");
+            ClassicAssert.IsFalse(v1.Equals(v3), "Test IEquatable equals");
 
             //Test object equals override
-            Assert.IsTrue(v1.Equals((object) v2), "Tests object equals");
-            Assert.IsFalse(v1.Equals((object) v3), "Tests object equals");
+            ClassicAssert.IsTrue(v1.Equals((object)v2), "Tests object equals");
+            ClassicAssert.IsFalse(v1.Equals((object)v3), "Tests object equals");
 
             //Test op equals
-            Assert.IsTrue(v1 == v2, "Testing OpEquals");
-            Assert.IsFalse(v1 == v3, "Testing OpEquals");
+            ClassicAssert.IsTrue(v1 == v2, "Testing OpEquals");
+            ClassicAssert.IsFalse(v1 == v3, "Testing OpEquals");
 
             //Test op not equals
-            Assert.IsTrue(v1 != v3, "Testing OpNotEquals");
-            Assert.IsFalse(v1 != v2, "Testing OpNotEquals");
+            ClassicAssert.IsTrue(v1 != v3, "Testing OpNotEquals");
+            ClassicAssert.IsFalse(v1 != v2, "Testing OpNotEquals");
         }
 
         [Test]
@@ -82,7 +83,7 @@ namespace Assimp.Test
             float x = -62, y = 5;
 
             Vector2D v = new Vector2D(x, y);
-            Assert.AreEqual((float) Math.Sqrt(x * x + y * y), v.Length(), "Testing v.Length()");
+            ClassicAssert.AreEqual((float)Math.Sqrt(x * x + y * y), v.Length(), "Testing v.Length()");
         }
 
         [Test]
@@ -91,7 +92,7 @@ namespace Assimp.Test
             float x = -5, y = 25f;
 
             Vector2D v = new Vector2D(x, y);
-            Assert.AreEqual((float) (x * x + y * y), v.LengthSquared(), "Testing v.LengthSquared()");
+            ClassicAssert.AreEqual((float)(x * x + y * y), v.LengthSquared(), "Testing v.LengthSquared()");
         }
 
         [Test]
@@ -110,7 +111,7 @@ namespace Assimp.Test
             float x = 5, y = 12;
             Vector2D v = new Vector2D(x, y);
             v.Normalize();
-            float invLength = 1.0f / (float) System.Math.Sqrt((x * x) + (y * y));
+            float invLength = 1.0f / (float)System.Math.Sqrt((x * x) + (y * y));
             x *= invLength;
             y *= invLength;
 

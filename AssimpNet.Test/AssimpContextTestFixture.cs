@@ -20,13 +20,14 @@
 * THE SOFTWARE.
 */
 
-using System;
-using System.IO;
-using System.Threading;
-using System.Collections.Generic;
 using Assimp.Configs;
 using Assimp.Unmanaged;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
 
 namespace Assimp.Test
 {
@@ -43,7 +44,7 @@ namespace Assimp.Test
 
             IEnumerable<string> filePaths = Directory.GetFiles(outputPath);
 
-            foreach(string filePath in filePaths)
+            foreach (string filePath in filePaths)
             {
                 if (File.Exists(filePath))
                     File.Delete(filePath);
@@ -149,18 +150,18 @@ namespace Assimp.Test
             Mesh importedTriangle = importedScene.Meshes[0];
 
             Assert.That(importedTriangle.VertexCount, Is.EqualTo(triangle.VertexCount));
-            for(int i = 0; i < importedTriangle.VertexCount; i++)
+            for (int i = 0; i < importedTriangle.VertexCount; i++)
             {
                 Assert.That(importedTriangle.Vertices[i].Equals(triangle.Vertices[i]), Is.True);
             }
 
             Assert.That(importedTriangle.FaceCount, Is.EqualTo(triangle.FaceCount));
-            for(int i = 0; i < importedTriangle.FaceCount; i++)
+            for (int i = 0; i < importedTriangle.FaceCount; i++)
             {
                 Face importedFace = importedTriangle.Faces[i];
                 Face face = triangle.Faces[i];
 
-                for(int j = 0; j < importedFace.IndexCount; j++)
+                for (int j = 0; j < importedFace.IndexCount; j++)
                 {
                     Assert.That(importedFace.Indices[j], Is.EqualTo(face.Indices[j]));
                 }
@@ -231,7 +232,7 @@ namespace Assimp.Test
             AssimpContext importer = new AssimpContext();
             LogStream.IsVerboseLoggingEnabled = true;
 
-            LogStream logstream = new LogStream(delegate(string msg, string userData)
+            LogStream logstream = new LogStream(delegate (string msg, string userData)
             {
                 Console.WriteLine(msg);
             });
@@ -399,7 +400,7 @@ namespace Assimp.Test
             foreach (var thread in threads)
                 thread.Start();
 
-            foreach(var thread in threads)
+            foreach (var thread in threads)
                 thread.Join();
 
             LogStream.DetachAllLogstreams();
