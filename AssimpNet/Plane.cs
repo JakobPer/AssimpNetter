@@ -26,32 +26,47 @@ using System.Runtime.InteropServices;
 namespace Assimp
 {
     /// <summary>
-    /// Defines a 3D ray with a point of origin and a direction.
+    /// Represents a plane in three-dimensional euclidean space where
+    /// A, B, C are components of the plane normal and D is the distance along the
+    /// normal from the origin to the plane.
     /// </summary>
-    /// <param name="Position">Origin of the ray in space."></param>
-    /// <param name="Direction">Direction of the ray."></param>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Ray
+    public struct Plane
     {
-        /// <summary>
-        /// Origin of the ray in space.
-        /// </summary>
-        public Vector3D Position;
 
         /// <summary>
-        /// Direction of the ray.
+        /// X component of the normal vector.
         /// </summary>
-        public Vector3D Direction;
+        public float A;
 
         /// <summary>
-        /// Constructs a new Ray.
+        /// Y component of the normal vector.
         /// </summary>
-        /// <param name="pos">Origin of the ray.</param>
-        /// <param name="dir">Direction of the ray.</param>
-        public Ray(Vector3D pos, Vector3D dir)
+        public float B;
+
+        /// <summary>
+        /// Z component of the normal vector.
+        /// </summary>
+        public float C;
+
+        /// <summary>
+        /// Distance from the origin to the plane along the normal vector.
+        /// </summary>
+        public float D;
+
+        /// <summary>
+        /// Constructs a new Plane.
+        /// </summary>
+        /// <param name="a">X component of the normal vector.</param>
+        /// <param name="b">Y component of the normal vector.</param>
+        /// <param name="c">Z component of the normal vector.</param>
+        /// <param name="d">Distance from the origin to the plane along the normal vector.</param>
+        public Plane(float a, float b, float c, float d)
         {
-            Position = pos;
-            Direction = dir;
+            A = a;
+            B = b;
+            C = c;
+            D = d;
         }
     }
 }

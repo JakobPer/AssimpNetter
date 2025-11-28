@@ -24,8 +24,6 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using Assimp.Configs;
 using Assimp.Unmanaged;
 using NUnit.Framework;
@@ -125,9 +123,9 @@ namespace Assimp.Test
             scene.RootNode = new Node("Root");
 
             Mesh triangle = new Mesh("", PrimitiveType.Triangle);
-            triangle.Vertices.Add(new Vector3(1, 0, 0));
-            triangle.Vertices.Add(new Vector3(5, 5, 0));
-            triangle.Vertices.Add(new Vector3(10, 0, 0));
+            triangle.Vertices.Add(new Vector3D(1, 0, 0));
+            triangle.Vertices.Add(new Vector3D(5, 5, 0));
+            triangle.Vertices.Add(new Vector3D(10, 0, 0));
             triangle.Faces.Add(new Face(new int[] { 0, 1, 2 }));
             triangle.MaterialIndex = 0;
 

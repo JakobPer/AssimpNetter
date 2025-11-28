@@ -20,7 +20,8 @@
 * THE SOFTWARE.
 */
 
-using System.Numerics;
+using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace Assimp
@@ -32,8 +33,51 @@ namespace Assimp
     /// <param name="Value">The 3D vector value of this key.</param>
     /// <param name="Interpolation">The interpolation setting of this key.</param>
     [StructLayout(LayoutKind.Sequential)]
-    public record struct VectorKey(double Time, Vector3 Value, AnimationInterpolation Interpolation = AnimationInterpolation.Linear)
+    public struct VectorKey : IEquatable<VectorKey>
     {
+        /// <summary>
+        /// The time of this key.
+        /// </summary>
+        public double Time;
+
+        /// <summary>
+        /// The 3D vector value of this key.
+        /// </summary>
+        public Vector3D Value;
+
+        /// <summary>
+        /// Constructs a new VectorKey.
+        /// </summary>
+        /// <param name="time">The time of this key.</param>
+        /// <param name="vector">The 3D vector value of this key.</param>
+        public VectorKey(double time, Vector3D vector)
+        {
+            Time = time;
+            Value = vector;
+        }
+
+        /// <summary>
+        /// Tests equality between two keys.
+        /// </summary>
+        /// <param name="a">The first key</param>
+        /// <param name="b">The second key</param>
+        /// <returns>True if the key's 3D vectors are the same, false otherwise.</returns>
+        public static bool operator ==(VectorKey a, VectorKey b)
+        {
+            return a.Value == b.Value;
+        }
+
+        /// <summary>
+        /// Tests inequality between two keys.
+        /// </summary>
+        /// <param name="a">The first key</param>
+        /// <param name="b">The second key</param>
+        /// <returns>True if the key's 3D vectors are not the same, false otherwise.</returns>
+        public static bool operator !=(VectorKey a, VectorKey b)
+        {
+            return a.Value != b.Value;
+        }
+
         /// <summary>
         /// Tests inequality between two keys.
         /// </summary>

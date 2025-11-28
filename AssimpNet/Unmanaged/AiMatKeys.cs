@@ -152,62 +152,62 @@ namespace Assimp.Unmanaged
         public const string REFRACTI = "$mat.refracti,0,0";
 
         /// <summary>
-        /// Diffuse color (Vector4)
+        /// Diffuse color (Color4D)
         /// </summary>
         public const string COLOR_DIFFUSE_BASE = "$clr.diffuse";
 
         /// <summary>
-        /// Diffuse color (Vector4)
+        /// Diffuse color (Color4D)
         /// </summary>
         public const string COLOR_DIFFUSE = "$clr.diffuse,0,0";
 
         /// <summary>
-        /// Ambient color (Vector4)
+        /// Ambient color (Color4D)
         /// </summary>
         public const string COLOR_AMBIENT_BASE = "$clr.ambient";
 
         /// <summary>
-        /// Ambient color (Vector4)
+        /// Ambient color (Color4D)
         /// </summary>
         public const string COLOR_AMBIENT = "$clr.ambient,0,0";
 
         /// <summary>
-        /// Specular color (Vector4)
+        /// Specular color (Color4D)
         /// </summary>
         public const string COLOR_SPECULAR_BASE = "$clr.specular";
 
         /// <summary>
-        /// Specular color (Vector4)
+        /// Specular color (Color4D)
         /// </summary>
         public const string COLOR_SPECULAR = "$clr.specular,0,0";
 
         /// <summary>
-        /// Emissive color (Vector4)
+        /// Emissive color (Color4D)
         /// </summary>
         public const string COLOR_EMISSIVE_BASE = "$clr.emissive";
 
         /// <summary>
-        /// Emissive color (Vector4)
+        /// Emissive color (Color4D)
         /// </summary>
         public const string COLOR_EMISSIVE = "$clr.emissive,0,0";
 
         /// <summary>
-        /// Transparent color (Vector4)
+        /// Transparent color (Color4D)
         /// </summary>
         public const string COLOR_TRANSPARENT_BASE = "$clr.transparent";
 
         /// <summary>
-        /// Transparent color (Vector4)
+        /// Transparent color (Color4D)
         /// </summary>
         public const string COLOR_TRANSPARENT = "$clr.transparent,0,0";
 
         /// <summary>
-        /// Reflective color (Vector4)
+        /// Reflective color (Color4D)
         /// </summary>
         public const string COLOR_REFLECTIVE_BASE = "$clr.reflective";
 
         /// <summary>
-        /// Reflective color (Vector4)
+        /// Reflective color (Color4D)
         /// </summary>
         public const string COLOR_REFLECTIVE = "$clr.reflective,0,0";
 

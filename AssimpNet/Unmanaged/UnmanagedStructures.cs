@@ -21,7 +21,6 @@
 */
 
 using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -242,32 +241,32 @@ namespace Assimp.Unmanaged
         public uint NumFaces;
 
         /// <summary>
-        /// aiVector3*, array of positions.
+        /// aiVector3D*, array of positions.
         /// </summary>
         public IntPtr Vertices;
 
         /// <summary>
-        /// aiVector3*, array of normals.
+        /// aiVector3D*, array of normals.
         /// </summary>
         public IntPtr Normals;
 
         /// <summary>
-        /// aiVector3*, array of tangents.
+        /// aiVector3D*, array of tangents.
         /// </summary>
         public IntPtr Tangents;
 
         /// <summary>
-        /// aiVector3*, array of bitangents.
+        /// aiVector3D*, array of bitangents.
         /// </summary>
         public IntPtr BiTangents;
 
         /// <summary>
-        /// aiVector4*[Max_Value], array of arrays of vertex colors. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_COLOR_SETS"/>.
+        /// aiColor4D*[Max_Value], array of arrays of vertex colors. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_COLOR_SETS"/>.
         /// </summary>
         public AiMeshColorArray Colors;
 
         /// <summary>
-        /// aiVector3*[Max_Value], array of arrays of texture coordinates. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_TEXTURECOORDS"/>.
+        /// aiVector3D*[Max_Value], array of arrays of texture coordinates. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_TEXTURECOORDS"/>.
         /// </summary>
         public AiMeshTextureCoordinateArray TextureCoords;
 
@@ -721,17 +720,17 @@ namespace Assimp.Unmanaged
         /// <summary>
         /// Position of the light.
         /// </summary>
-        public Vector3 Position;
+        public Vector3D Position;
 
         /// <summary>
         /// Direction of the spot/directional light.
         /// </summary>
-        public Vector3 Direction;
+        public Vector3D Direction;
 
         /// <summary>
         /// Up direction of the light source in space. Undefined for point lights.
         /// </summary>
-        public Vector3 Up;
+        public Vector3D Up;
 
         /// <summary>
         /// Attenuation constant value.
@@ -751,17 +750,17 @@ namespace Assimp.Unmanaged
         /// <summary>
         /// Diffuse color.
         /// </summary>
-        public Vector3 ColorDiffuse;
+        public Color3D ColorDiffuse;
 
         /// <summary>
         /// Specular color.
         /// </summary>
-        public Vector3 ColorSpecular;
+        public Color3D ColorSpecular;
 
         /// <summary>
         /// Ambient color.
         /// </summary>
-        public Vector3 ColorAmbient;
+        public Color3D ColorAmbient;
 
         /// <summary>
         /// Spot light inner angle.
@@ -776,7 +775,7 @@ namespace Assimp.Unmanaged
         /// <summary>
         /// Width (X) and Height (Y) of the area that represents an <see cref="LightSourceType.Area"/> light.
         /// </summary>
-        public Vector2 AreaSize;
+        public Vector2D AreaSize;
     }
 
     /// <summary>
@@ -793,17 +792,17 @@ namespace Assimp.Unmanaged
         /// <summary>
         /// Position of the camera.
         /// </summary>
-        public Vector3 Position;
+        public Vector3D Position;
 
         /// <summary>
         /// Up vector of the camera.
         /// </summary>
-        public Vector3 Up;
+        public Vector3D Up;
 
         /// <summary>
         /// Viewing direction of the camera.
         /// </summary>
-        public Vector3 LookAt;
+        public Vector3D LookAt;
 
         /// <summary>
         /// Field Of View of the camera.
@@ -1012,32 +1011,32 @@ namespace Assimp.Unmanaged
         public AiString Name;
         
         /// <summary>
-        /// aiVector3*, replacement position array.
+        /// aiVector3D*, replacement position array.
         /// </summary>
         public IntPtr Vertices;
 
         /// <summary>
-        /// aiVector3*, replacement normal array.
+        /// aiVector3D*, replacement normal array.
         /// </summary>
         public IntPtr Normals;
 
         /// <summary>
-        /// aiVector3*, replacement tangent array.
+        /// aiVector3D*, replacement tangent array.
         /// </summary>
         public IntPtr Tangents;
 
         /// <summary>
-        /// aiVector3*, replacement bitangent array.
+        /// aiVector3D*, replacement bitangent array.
         /// </summary>
         public IntPtr BiTangents;
 
         /// <summary>
-        /// aiVector4*[Max_Value], array of arrays of vertex colors. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_COLOR_SETS"/>.
+        /// aiColor4D*[Max_Value], array of arrays of vertex colors. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_COLOR_SETS"/>.
         /// </summary>
         public AiMeshColorArray Colors;
 
         /// <summary>
-        /// aiVector3*[Max_Value], array of arrays of texture coordinates. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_TEXTURECOORDS"/>.
+        /// aiVector3D*[Max_Value], array of arrays of texture coordinates. Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_TEXTURECOORDS"/>.
         /// </summary>
         public AiMeshTextureCoordinateArray TextureCoords;
 

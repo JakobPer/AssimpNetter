@@ -22,7 +22,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
 using System.Text;
 using Assimp.Unmanaged;
 
@@ -275,11 +274,11 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a Vector3 property.
+        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a Color3D property.
         /// </summary>
         /// <param name="baseName">Base name of the property</param>
         /// <param name="value">Property value</param>
-        public MaterialProperty(string baseName, Vector3 value)
+        public MaterialProperty(String baseName, Color3D value)
         {
             m_name = baseName;
             m_type = PropertyType.Float;
@@ -287,16 +286,16 @@ namespace Assimp
             m_texType = TextureType.None;
             m_rawValue = null;
 
-            SetVector3Value(value);
+            SetColor3DValue(value);
             AssertIsBaseName();
         }
 
         /// <summary>
-        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a Vector4 property.
+        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a Color4D property.
         /// </summary>
         /// <param name="baseName">Base name of the property</param>
         /// <param name="value">Property value</param>
-        public MaterialProperty(string baseName, Vector4 value)
+        public MaterialProperty(String baseName, Color4D value)
         {
             m_name = baseName;
             m_type = PropertyType.Float;
@@ -304,7 +303,7 @@ namespace Assimp
             m_texType = TextureType.None;
             m_rawValue = null;
 
-            SetVector4Value(value);
+            SetColor4DValue(value);
             AssertIsBaseName();
         }
 
@@ -539,38 +538,38 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Gets the property raw data as a Vector3.
+        /// Gets the property raw data as a Color3D.
         /// </summary>
-        /// <returns>Vector3</returns>
-        public Vector3 GetVector3Value()
+        /// <returns>Color3D</returns>
+        public Color3D GetColor3DValue()
         {
             if(m_type != PropertyType.Float)
-                return new Vector3();
+                return new Color3D();
 
-            return GetValueAs<Vector3>();
+            return GetValueAs<Color3D>();
         }
 
         /// <summary>
-        /// Sets the property raw data as a Vector3.
+        /// Sets the property raw data as a Color3D.
         /// </summary>
-        /// <param name="value">Vector3</param>
+        /// <param name="value">Color3D</param>
         /// <returns>True if successful, false otherwise</returns>
-        public bool SetVector3Value(Vector3 value)
+        public bool SetColor3DValue(Color3D value)
         {
             if(m_type != PropertyType.Float)
                 return false;
 
-            return SetValueAs<Vector3>(value);
+            return SetValueAs<Color3D>(value);
         }
 
         /// <summary>
-        /// Gets the property raw data as a Vector4.
+        /// Gets the property raw data as a Color4D.
         /// </summary>
-        /// <returns>Vector4</returns>
-        public Vector4 GetVector4Value()
+        /// <returns>Color4D</returns>
+        public Color4D GetColor4DValue()
         {
             if(m_type != PropertyType.Float || m_rawValue == null)
-                return new Vector4();
+                return new Color4D();
 
             //We may have a Color that's RGB, so still read it and set alpha to 1.0
             unsafe
@@ -578,32 +577,32 @@ namespace Assimp
                 fixed(byte* ptr = m_rawValue)
                 {
 
-                    if(m_rawValue.Length >= MemoryHelper.SizeOf<Vector4>())
+                    if(m_rawValue.Length >= MemoryHelper.SizeOf<Color4D>())
                     {
-                        return MemoryHelper.Read<Vector4>(new IntPtr(ptr));
+                        return MemoryHelper.Read<Color4D>(new IntPtr(ptr));
                     }
-                    else if(m_rawValue.Length >= MemoryHelper.SizeOf<Vector3>())
+                    else if(m_rawValue.Length >= MemoryHelper.SizeOf<Color3D>())
                     {
-                        return new Vector4(MemoryHelper.Read<Vector3>(new IntPtr(ptr)), 1.0f);
+                        return new Color4D(MemoryHelper.Read<Color3D>(new IntPtr(ptr)), 1.0f);
                     }
 
                 }
             }
 
-            return new Vector4();
+            return new Color4D();
         }
 
         /// <summary>
-        /// Sets the property raw data as a Vector4.
+        /// Sets the property raw data as a Color4D.
         /// </summary>
-        /// <param name="value">Vector4</param>
+        /// <param name="value">Color4D</param>
         /// <returns>True if successful, false otherwise</returns>
-        public bool SetVector4Value(Vector4 value)
+        public bool SetColor4DValue(Color4D value)
         {
             if(m_type != PropertyType.Float)
                 return false;
 
-            return SetValueAs<Vector4>(value);
+            return SetValueAs<Color4D>(value);
         }
 
         private unsafe T[] GetValueArrayAs<T>(int count) where T : struct

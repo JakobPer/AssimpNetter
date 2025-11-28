@@ -20,7 +20,7 @@
 * THE SOFTWARE.
 */
 
-using System.Numerics;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Assimp
@@ -34,5 +34,23 @@ namespace Assimp
     /// radians. The rotation center is 0.5f|0.5f and the
     /// default value is zero.</param>
     [StructLayout(LayoutKind.Sequential)]
-    public record struct UVTransform(Vector2 Translation, Vector2 Scaling, float Rotation);
+    public struct UVTransform
+    {
+        /// <summary>
+        /// Translation on the U and V axes. Default is 0|0
+        /// </summary>
+        public Vector2D Translation;
+
+        /// <summary>
+        /// Scaling on the U and V axes. Default is 1|1.
+        /// </summary>
+        public Vector2D Scaling;
+
+        /// <summary>
+        /// Rotation in counter-clockwise direction, specfied in
+        /// radians. The rotation center is 0.5f|0.5f and the
+        /// default value is zero.
+        /// </summary>
+        public float Rotation;
+    }
 }

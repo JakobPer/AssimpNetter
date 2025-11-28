@@ -60,9 +60,9 @@ namespace Assimp
         String = 5,
 
         /// <summary>
-        /// Metadata is a <see cref="Vector3"/>.
+        /// Metadata is a <see cref="Vector3D"/>.
         /// </summary>
-        Vector3 = 6,
+        Vector3D = 6,
 
         /// <summary>
         /// Metadata is a signed 64-bit integer.

@@ -23,7 +23,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using Assimp.Unmanaged;
 
 namespace Assimp
@@ -430,15 +429,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color diffuse. Default value is white.
         /// </summary>
-        public Vector4 ColorDiffuse
+        public Color4D ColorDiffuse
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_DIFFUSE);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+                return new Color4D(1.0f, 1.0f, 1.0f, 1.0f);
             }
             set
             {
@@ -451,7 +450,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }
@@ -464,15 +463,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color ambient. Default value is (.2f, .2f, .2f, 1.0f).
         /// </summary>
-        public Vector4 ColorAmbient
+        public Color4D ColorAmbient
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_AMBIENT);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(.2f, .2f, .2f, 1.0f);
+                return new Color4D(.2f, .2f, .2f, 1.0f);
             }
             set
             {
@@ -485,7 +484,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }
@@ -498,15 +497,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color specular. Default value is black.
         /// </summary>
-        public Vector4 ColorSpecular
+        public Color4D ColorSpecular
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_SPECULAR);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(0, 0, 0, 1.0f);
+                return new Color4D(0, 0, 0, 1.0f);
             }
             set
             {
@@ -519,7 +518,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }
@@ -532,15 +531,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color emissive. Default value is black.
         /// </summary>
-        public Vector4 ColorEmissive
+        public Color4D ColorEmissive
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_EMISSIVE);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(0, 0, 0, 1.0f);
+                return new Color4D(0, 0, 0, 1.0f);
             }
             set
             {
@@ -553,7 +552,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }
@@ -566,15 +565,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color transparent. Default value is black.
         /// </summary>
-        public Vector4 ColorTransparent
+        public Color4D ColorTransparent
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_TRANSPARENT);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(0, 0, 0, 1.0f);
+                return new Color4D(0, 0, 0, 1.0f);
             }
             set
             {
@@ -587,7 +586,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }
@@ -600,15 +599,15 @@ namespace Assimp
         /// <summary>
         /// Gets the color reflective. Default value is black.
         /// </summary>
-        public Vector4 ColorReflective
+        public Color4D ColorReflective
         {
             get
             {
                 MaterialProperty prop = GetProperty(AiMatKeys.COLOR_REFLECTIVE);
                 if(prop != null)
-                    return prop.GetVector4Value();
+                    return prop.GetColor4DValue();
 
-                return new Vector4(0, 0, 0, 1.0f);
+                return new Color4D(0, 0, 0, 1.0f);
             }
             set
             {
@@ -621,7 +620,7 @@ namespace Assimp
                 }
                 else
                 {
-                    prop.SetVector4Value(value);
+                    prop.SetColor4DValue(value);
                 }
             }
         }

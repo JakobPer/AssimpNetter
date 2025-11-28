@@ -20,7 +20,8 @@
 * THE SOFTWARE.
 */
 
-using System.Numerics;
+using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace Assimp
@@ -36,11 +37,74 @@ namespace Assimp
     public record struct Texel(byte B, byte G, byte R, byte A)
     {
         /// <summary>
-        /// Implicitly converts a texel to a Vector4.
+        /// Tests inequality between two texels.
+        /// </summary>
+        /// <param name="a">First texel</param>
+        /// <param name="b">Second texel</param>
+        /// <returns>True if the texels are not equal, false otherwise.</returns>
+        public static bool operator !=(Texel a, Texel b)
+        {
+            return (a.B != b.B) && (a.G != b.G) && (a.R != b.R) && (a.A != b.A);
+        }
+
+        /// <summary>
+        /// Implicitly converts a texel to a Color4D.
         /// </summary>
         /// <param name="texel">Texel to convert</param>
-        /// <returns>Converted Vector4</returns>
-        public static implicit operator Vector4(Texel texel)
-            => new(texel.R / 255.0f, texel.G / 255.0f, texel.B / 255.0f, texel.A / 255.0f);
+        /// <returns>Converted Color4D</returns>
+        public static implicit operator Color4D(Texel texel)
+        {
+            return new Color4D(texel.R / 255.0f, texel.G / 255.0f, texel.B / 255.0f, texel.A / 255.0f);
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if(obj is Texel)
+            {
+                return Equals((Texel) obj);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Tests equality between this key and another.
+        /// </summary>
+        /// <param name="other">Other key to test</param>
+        /// <returns>True if their indices are equal</returns>
+        public bool Equals(Texel other)
+        {
+            return (B == other.B) && (G == other.G) && (R == other.R) && (A == other.A);
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
+        public override int GetHashCode()
+        {
+            return B.GetHashCode() + G.GetHashCode() + R.GetHashCode() + A.GetHashCode();
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String"/> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            CultureInfo info = CultureInfo.CurrentCulture;
+            return String.Format(info, "{{B:{0} G:{1} R:{2} A:{3}}}",
+                new Object[] { B.ToString(info), G.ToString(info), R.ToString(info), A.ToString(info) });
+        }
     }
 }

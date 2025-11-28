@@ -23,7 +23,7 @@
 using System;
 using System.Collections.Generic;
 using Assimp.Unmanaged;
-using System.Numerics;
+using System.Globalization;
 
 namespace Assimp
 {
@@ -94,10 +94,10 @@ namespace Assimp
                         ulong uint64Value = (ulong) kv.Value.Data;
                         MemoryHelper.Write<ulong>(entry.Data, uint64Value);
                         break;
-                    case MetaDataType.Vector3:
-                        entry.Data = MemoryHelper.AllocateMemory(MemoryHelper.SizeOf<Vector3>());
-                        Vector3 vectorValue = (Vector3) kv.Value.Data;
-                        MemoryHelper.Write<Vector3>(entry.Data, vectorValue);
+                    case MetaDataType.Vector3D:
+                        entry.Data = MemoryHelper.AllocateMemory(MemoryHelper.SizeOf<Vector3D>());
+                        Vector3D vectorValue = (Vector3D) kv.Value.Data;
+                        MemoryHelper.Write<Vector3D>(entry.Data, vectorValue);
                         break;
                 }
 
@@ -154,8 +154,8 @@ namespace Assimp
                     case MetaDataType.UInt64:
                         data = MemoryHelper.Read<ulong>(entry.Data);
                         break;
-                    case MetaDataType.Vector3:
-                        data = MemoryHelper.Read<Vector3>(entry.Data);
+                    case MetaDataType.Vector3D:
+                        data = MemoryHelper.Read<Vector3D>(entry.Data);
                         break;
                 }
 
@@ -233,8 +233,8 @@ namespace Assimp
                     case MetaDataType.UInt64:
                         dataTypeType = typeof(ulong);
                         break;
-                    case MetaDataType.Vector3:
-                        dataTypeType = typeof(Vector3);
+                    case MetaDataType.Vector3D:
+                        dataTypeType = typeof(Vector3D);
                         break;
                 }
 

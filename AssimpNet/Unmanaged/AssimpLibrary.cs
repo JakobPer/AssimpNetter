@@ -22,7 +22,6 @@
 
 using System;
 using System.IO;
-using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace Assimp.Unmanaged
@@ -483,8 +482,8 @@ namespace Assimp.Unmanaged
         /// <param name="key">Ai mat key (base) name to search for</param>
         /// <param name="texType">Texture Type semantic, always zero for non-texture properties</param>
         /// <param name="texIndex">Texture index, always zero for non-texture properties</param>
-        /// <returns>The color if it exists. If not, the default Vector4 value is returned.</returns>
-        public Vector4 GetMaterialColor(ref AiMaterial mat, string key, TextureType texType, uint texIndex)
+        /// <returns>The color if it exists. If not, the default Color4D value is returned.</returns>
+        public Color4D GetMaterialColor(ref AiMaterial mat, String key, TextureType texType, uint texIndex)
         {
             LoadIfNotLoaded();
 
@@ -493,11 +492,11 @@ namespace Assimp.Unmanaged
             IntPtr ptr = IntPtr.Zero;
             try
             {
-                ptr = MemoryHelper.AllocateMemory(MemoryHelper.SizeOf<Vector4>());
+                ptr = MemoryHelper.AllocateMemory(MemoryHelper.SizeOf<Color4D>());
                 ReturnCode code = func(ref mat, key, (uint) texType, texIndex, ptr);
-                Vector4 color = new Vector4();
+                Color4D color = new Color4D();
                 if(code == ReturnCode.Success && ptr != IntPtr.Zero)
-                    color = MemoryHelper.Read<Vector4>(ptr);
+                    color = MemoryHelper.Read<Color4D>(ptr);
 
                 return color;
             }
@@ -797,6 +796,148 @@ namespace Assimp.Unmanaged
             }
 
             return info;
+        }
+
+        #endregion
+
+        #region Math Methods
+
+        /// <summary>
+        /// Creates a quaternion from the 3x3 rotation matrix.
+        /// </summary>
+        /// <param name="quat">Quaternion struct to fill</param>
+        /// <param name="mat">Rotation matrix</param>
+        public void CreateQuaternionFromMatrix(out Quaternion quat, ref Matrix3x3 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiCreateQuaternionFromMatrix func = GetFunction<Functions.aiCreateQuaternionFromMatrix>(FunctionNames.aiCreateQuaternionFromMatrix);
+
+            func(out quat, ref mat);
+        }
+
+        /// <summary>
+        /// Decomposes a 4x4 matrix into its scaling, rotation, and translation parts.
+        /// </summary>
+        /// <param name="mat">4x4 Matrix to decompose</param>
+        /// <param name="scaling">Scaling vector</param>
+        /// <param name="rotation">Quaternion containing the rotation</param>
+        /// <param name="position">Translation vector</param>
+        public void DecomposeMatrix(ref Matrix4x4 mat, out Vector3D scaling, out Quaternion rotation, out Vector3D position)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiDecomposeMatrix func = GetFunction<Functions.aiDecomposeMatrix>(FunctionNames.aiDecomposeMatrix);
+
+            func(ref mat, out scaling, out rotation, out position);
+        }
+
+        /// <summary>
+        /// Transposes the 4x4 matrix.
+        /// </summary>
+        /// <param name="mat">Matrix to transpose</param>
+        public void TransposeMatrix4(ref Matrix4x4 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiTransposeMatrix4 func = GetFunction<Functions.aiTransposeMatrix4>(FunctionNames.aiTransposeMatrix4);
+
+            func(ref mat);
+        }
+
+        /// <summary>
+        /// Transposes the 3x3 matrix.
+        /// </summary>
+        /// <param name="mat">Matrix to transpose</param>
+        public void TransposeMatrix3(ref Matrix3x3 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiTransposeMatrix3 func = GetFunction<Functions.aiTransposeMatrix3>(FunctionNames.aiTransposeMatrix3);
+
+            func(ref mat);
+        }
+
+        /// <summary>
+        /// Transforms the vector by the 3x3 rotation matrix.
+        /// </summary>
+        /// <param name="vec">Vector to transform</param>
+        /// <param name="mat">Rotation matrix</param>
+        public void TransformVecByMatrix3(ref Vector3D vec, ref Matrix3x3 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiTransformVecByMatrix3 func = GetFunction<Functions.aiTransformVecByMatrix3>(FunctionNames.aiTransformVecByMatrix3);
+
+            func(ref vec, ref mat);
+        }
+
+        /// <summary>
+        /// Transforms the vector by the 4x4 matrix.
+        /// </summary>
+        /// <param name="vec">Vector to transform</param>
+        /// <param name="mat">Matrix transformation</param>
+        public void TransformVecByMatrix4(ref Vector3D vec, ref Matrix4x4 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiTransformVecByMatrix4 func = GetFunction<Functions.aiTransformVecByMatrix4>(FunctionNames.aiTransformVecByMatrix4);
+
+            func(ref vec, ref mat);
+        }
+
+        /// <summary>
+        /// Multiplies two 4x4 matrices. The destination matrix receives the result.
+        /// </summary>
+        /// <param name="dst">First input matrix and is also the Matrix to receive the result</param>
+        /// <param name="src">Second input matrix, to be multiplied with "dst".</param>
+        public void MultiplyMatrix4(ref Matrix4x4 dst, ref Matrix4x4 src)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiMultiplyMatrix4 func = GetFunction<Functions.aiMultiplyMatrix4>(FunctionNames.aiMultiplyMatrix4);
+
+            func(ref dst, ref src);
+        }
+
+        /// <summary>
+        /// Multiplies two 3x3 matrices. The destination matrix receives the result.
+        /// </summary>
+        /// <param name="dst">First input matrix and is also the Matrix to receive the result</param>
+        /// <param name="src">Second input matrix, to be multiplied with "dst".</param>
+        public void MultiplyMatrix3(ref Matrix3x3 dst, ref Matrix3x3 src)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiMultiplyMatrix3 func = GetFunction<Functions.aiMultiplyMatrix3>(FunctionNames.aiMultiplyMatrix3);
+
+            func(ref dst, ref src);
+        }
+
+        /// <summary>
+        /// Creates a 3x3 identity matrix.
+        /// </summary>
+        /// <param name="mat">Matrix to hold the identity</param>
+        public void IdentityMatrix3(out Matrix3x3 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiIdentityMatrix3 func = GetFunction<Functions.aiIdentityMatrix3>(FunctionNames.aiIdentityMatrix3);
+
+            func(out mat);
+        }
+
+        /// <summary>
+        /// Creates a 4x4 identity matrix.
+        /// </summary>
+        /// <param name="mat">Matrix to hold the identity</param>
+        public void IdentityMatrix4(out Matrix4x4 mat)
+        {
+            LoadIfNotLoaded();
+
+            Functions.aiIdentityMatrix4 func = GetFunction<Functions.aiIdentityMatrix4>(FunctionNames.aiIdentityMatrix4);
+
+            func(out mat);
         }
 
         #endregion
@@ -1147,6 +1288,40 @@ namespace Assimp.Unmanaged
 
             [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiGetMaterialTextureCount)]
             public delegate uint aiGetMaterialTextureCount(ref AiMaterial mat, TextureType type);
+
+            #endregion
+
+            #region Math Delegates
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiCreateQuaternionFromMatrix)]
+            public delegate void aiCreateQuaternionFromMatrix(out Quaternion quat, ref Matrix3x3 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiDecomposeMatrix)]
+            public delegate void aiDecomposeMatrix(ref Matrix4x4 mat, out Vector3D scaling, out Quaternion rotation, out Vector3D position);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiTransposeMatrix4)]
+            public delegate void aiTransposeMatrix4(ref Matrix4x4 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiTransposeMatrix3)]
+            public delegate void aiTransposeMatrix3(ref Matrix3x3 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiTransformVecByMatrix3)]
+            public delegate void aiTransformVecByMatrix3(ref Vector3D vec, ref Matrix3x3 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiTransformVecByMatrix4)]
+            public delegate void aiTransformVecByMatrix4(ref Vector3D vec, ref Matrix4x4 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiMultiplyMatrix4)]
+            public delegate void aiMultiplyMatrix4(ref Matrix4x4 dst, ref Matrix4x4 src);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiMultiplyMatrix3)]
+            public delegate void aiMultiplyMatrix3(ref Matrix3x3 dst, ref Matrix3x3 src);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiIdentityMatrix3)]
+            public delegate void aiIdentityMatrix3(out Matrix3x3 mat);
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiIdentityMatrix4)]
+            public delegate void aiIdentityMatrix4(out Matrix4x4 mat);
 
             #endregion
 
