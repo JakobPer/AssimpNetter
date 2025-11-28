@@ -33,14 +33,14 @@ namespace Assimp.Test
         [Test]
         public void TestIndexer()
         {
-            float[] values = new float[] { 1.0f, 2.0f, 3.0f, 5.0f, 0.0f, -5.0f, .5f, 100.25f, .3f, .35f, .025f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
+            double[] values = new double[] { 1.0f, 2.0f, 3.0f, 5.0f, 0.0f, -5.0f, .5f, 100.25f, .3f, .35f, .025f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
 
             Matrix4x4 m = Matrix4x4.Identity;
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    float value = values[(i * 4) + j];
+                    double value = values[(i * 4) + j];
                     //Matrix indices are one-based.
                     m[i + 1, j + 1] = value;
                     TestHelper.AssertEquals(value, m[i + 1, j + 1], String.Format("Testing [{0},{1}] indexer.", i + 1, j + 1));
@@ -79,11 +79,11 @@ namespace Assimp.Test
             axis.Normalize();
 
             Quaternion rot = new Quaternion(axis, TK.MathHelper.Pi);
-            float x = 50.0f;
-            float y = 100.0f;
-            float z = -50.0f;
+            double x = 50.0f;
+            double y = 100.0f;
+            double z = -50.0f;
 
-            float scale = 2.0f;
+            double scale = 2.0f;
 
             Matrix4x4 m = Matrix4x4.FromScaling(new Vector3D(scale, scale, scale)) * Matrix4x4.FromAngleAxis(TK.MathHelper.Pi, axis) * Matrix4x4.FromTranslation(new Vector3D(x, y, z));
 
@@ -118,8 +118,8 @@ namespace Assimp.Test
             TK.Matrix4 tkM = TK.Matrix4.CreateRotationX(x) * TK.Matrix4.CreateRotationY(y);
             Matrix4x4 m = Matrix4x4.FromRotationX(x) * Matrix4x4.FromRotationY(y);
 
-            float tkDet = tkM.Determinant;
-            float det = m.Determinant();
+            double tkDet = tkM.Determinant;
+            double det = m.Determinant();
             TestHelper.AssertEquals(tkDet, det, "Testing determinant");
         }
 

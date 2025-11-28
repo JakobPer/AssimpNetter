@@ -153,11 +153,11 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Constructs a float property.
+        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Constructs a double property.
         /// </summary>
         /// <param name="baseName">Base name of the property</param>
         /// <param name="value">Property value</param>
-        public MaterialProperty(string baseName, float value)
+        public MaterialProperty(string baseName, double value)
         {
             m_name = baseName;
             m_type = PropertyType.Float;
@@ -240,11 +240,11 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a float array property.
+        /// Constructs a new instance of the <see cref="MaterialProperty"/> class. Creates a double array property.
         /// </summary>
         /// <param name="baseName">Base name of the property</param>
         /// <param name="values">Property values</param>
-        public MaterialProperty(string baseName, float[] values)
+        public MaterialProperty(string baseName, double[] values)
         {
             m_name = baseName;
             m_type = PropertyType.Float;
@@ -308,28 +308,28 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Gets the property raw data as a float.
+        /// Gets the property raw data as a double.
         /// </summary>
         /// <returns>Float</returns>
-        public float GetFloatValue()
+        public double GetFloatValue()
         {
             if(m_type == PropertyType.Float || m_type == PropertyType.Integer)
-                return GetValueAs<float>();
+                return GetValueAs<double>();
 
             return 0;
         }
 
         /// <summary>
-        /// Sets the property raw data with a float.
+        /// Sets the property raw data with a double.
         /// </summary>
         /// <param name="value">Float.</param>
         /// <returns>True if successful, false otherwise</returns>
-        public bool SetFloatValue(float value)
+        public bool SetFloatValue(double value)
         {
             if(m_type != PropertyType.Float && m_type != PropertyType.Integer)
                 return false;
 
-            return SetValueAs<float>(value);
+            return SetValueAs<double>(value);
         }
 
         /// <summary>
@@ -409,44 +409,44 @@ namespace Assimp
         }
 
         /// <summary>
-        /// Gets the property raw data as a float array.
+        /// Gets the property raw data as a double array.
         /// </summary>
         /// <param name="count">Number of elements to get</param>
         /// <returns>Float array</returns>
-        public float[] GetFloatArrayValue(int count)
+        public double[] GetFloatArrayValue(int count)
         {
             if(m_type == PropertyType.Float || m_type == PropertyType.Integer)
-                return GetValueArrayAs<float>(count);
+                return GetValueArrayAs<double>(count);
 
             return null;
         }
 
         /// <summary>
-        /// Gets the property raw data as a float array.
+        /// Gets the property raw data as a double array.
         /// </summary>
         /// <returns>Float array</returns>
-        public float[] GetFloatArrayValue()
+        public double[] GetFloatArrayValue()
         {
             if(m_type == PropertyType.Float || m_type == PropertyType.Integer)
             {
-                int count = ByteCount / sizeof(float);
-                return GetValueArrayAs<float>(count);
+                int count = ByteCount / sizeof(double);
+                return GetValueArrayAs<double>(count);
             }
 
             return null;
         }
 
         /// <summary>
-        /// Sets the property raw data as a float array.
+        /// Sets the property raw data as a double array.
         /// </summary>
         /// <param name="values">Values to set</param>
         /// <returns>True if successful, otherwise false</returns>
-        public bool SetFloatArrayValue(float[] values)
+        public bool SetFloatArrayValue(double[] values)
         {
             if(m_type != PropertyType.Float && m_type != PropertyType.Integer)
                 return false;
 
-            return SetValueArrayAs<float>(values);
+            return SetValueArrayAs<double>(values);
         }
 
         /// <summary>

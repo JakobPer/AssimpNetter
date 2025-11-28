@@ -98,7 +98,7 @@ namespace Assimp.Unmanaged
         /// <summary>
         /// Defines the deboning threshold.
         /// </summary>
-        public const float AI_DEBONE_THRESHOLD = 1.0f;
+        public const double AI_DEBONE_THRESHOLD = 1.0f;
 
         #endregion
 

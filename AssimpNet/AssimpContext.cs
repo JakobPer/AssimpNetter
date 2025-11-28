@@ -42,10 +42,10 @@ namespace Assimp
         private string[] m_importFormats;
         private ImporterDescription[] m_importerDescrs;
 
-        private float m_scale = 1.0f;
-        private float m_xAxisRotation = 0.0f;
-        private float m_yAxisRotation = 0.0f;
-        private float m_zAxisRotation = 0.0f;
+        private double m_scale = 1.0f;
+        private double m_xAxisRotation = 0.0f;
+        private double m_yAxisRotation = 0.0f;
+        private double m_zAxisRotation = 0.0f;
         private bool m_buildMatrix = false;
         private Matrix4x4 m_scaleRot = Matrix4x4.Identity;
 
@@ -60,7 +60,7 @@ namespace Assimp
         /// Gets or sets the uniform scale for the model. This is multiplied
         /// with the existing root node's transform. This is only used during import.
         /// </summary>
-        public float Scale
+        public double Scale
         {
             get => m_scale;
             set
@@ -77,7 +77,7 @@ namespace Assimp
         /// Gets or sets the model's rotation about the X-Axis, in degrees. This is multiplied
         /// with the existing root node's transform. This is only used during import.
         /// </summary>
-        public float XAxisRotation
+        public double XAxisRotation
         {
             get => m_xAxisRotation;
             set
@@ -94,7 +94,7 @@ namespace Assimp
         /// Gets or sets the model's rotation abut the Y-Axis, in degrees. This is multiplied
         /// with the existing root node's transform. This is only used during import.
         /// </summary>
-        public float YAxisRotation
+        public double YAxisRotation
         {
             get => m_yAxisRotation;
             set
@@ -111,7 +111,7 @@ namespace Assimp
         /// Gets or sets the model's rotation about the Z-Axis, in degrees. This is multiplied
         /// with the existing root node's transform. This is only used during import.
         /// </summary>
-        public float ZAxisRotation
+        public double ZAxisRotation
         {
             get => m_zAxisRotation;
             set
@@ -1002,9 +1002,9 @@ namespace Assimp
             if(m_buildMatrix)
             {
                 Matrix4x4 scale = Matrix4x4.FromScaling(new Vector3D(m_scale, m_scale, m_scale));
-                Matrix4x4 xRot = Matrix4x4.FromRotationX(m_xAxisRotation * (float) (Math.PI / 180.0d));
-                Matrix4x4 yRot = Matrix4x4.FromRotationY(m_yAxisRotation * (float) (Math.PI / 180.0d));
-                Matrix4x4 zRot = Matrix4x4.FromRotationZ(m_zAxisRotation * (float) (Math.PI / 180.0d));
+                Matrix4x4 xRot = Matrix4x4.FromRotationX(m_xAxisRotation * (double) (Math.PI / 180.0d));
+                Matrix4x4 yRot = Matrix4x4.FromRotationY(m_yAxisRotation * (double) (Math.PI / 180.0d));
+                Matrix4x4 zRot = Matrix4x4.FromRotationZ(m_zAxisRotation * (double) (Math.PI / 180.0d));
                 m_scaleRot = scale * ((xRot * yRot) * zRot);
             }
 

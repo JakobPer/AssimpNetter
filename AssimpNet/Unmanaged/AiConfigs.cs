@@ -64,7 +64,7 @@ namespace Assimp.Unmanaged
         /// Specifies the maximum angle that may be between two vertex tangents that their tangents
         /// and bitangents are smoothed during the step to calculate the tangent basis. The angle specified 
         /// is in degrees. The maximum value is 175 degrees.
-        /// <para>Type: float. Default: 45 degrees</para>
+        /// <para>Type: double. Default: 45 degrees</para>
         /// </summary>
         public const string AI_CONFIG_PP_CT_MAX_SMOOTHING_ANGLE = "PP_CT_MAX_SMOOTHING_ANGLE";
 
@@ -73,7 +73,7 @@ namespace Assimp.Unmanaged
         /// their normals will be smoothed together during the calculate smooth normals step. This is commonly
         /// called the "crease angle". The angle is specified in degrees. Maximum value is 175 degrees (all vertices
         /// smoothed).
-        /// <para>Type: float. Default: 175 degrees</para>
+        /// <para>Type: double. Default: 175 degrees</para>
         /// </summary>
         public const string AI_CONFIG_PP_GSN_MAX_SMOOTHING_ANGLE = "PP_GSN_MAX_SMOOTHING_ANGLE";
 
@@ -204,7 +204,7 @@ namespace Assimp.Unmanaged
         /// during the comparison. The step checks for animation tracks where all frame values are absolutely equal 
         /// and removes them. Two floats are considered equal if the invariant <c>abs(n0-n1) > epislon</c> holds
         /// true for all vector/quaternion components.
-        /// <para>Type: float. Default: 0.0f (comparisons are exact)</para>
+        /// <para>Type: double. Default: 0.0f (comparisons are exact)</para>
         /// </summary>
         public const string AI_CONFIG_PP_FID_ANIM_ACCURACY = "PP_FID_ANIM_ACCURACY";
 
@@ -248,7 +248,7 @@ namespace Assimp.Unmanaged
 
         /// <summary>
         /// Threshold used to determine if a bone is kept or removed during the <see cref="PostProcessSteps.Debone"/> step.
-        /// <para>Type: float. Default: 1.0f</para>
+        /// <para>Type: double. Default: 1.0f</para>
         /// </summary>
         public const string AI_CONFIG_PP_DB_THRESHOLD = "PP_DB_THRESHOLD";
 

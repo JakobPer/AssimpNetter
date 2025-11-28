@@ -70,9 +70,9 @@ namespace Assimp
                         MemoryHelper.Write<bool>(entry.Data, boolValue);
                         break;
                     case MetaDataType.Float:
-                        entry.Data = MemoryHelper.AllocateMemory(sizeof(float));
-                        float floatValue = (float) kv.Value.Data;
-                        MemoryHelper.Write<float>(entry.Data, floatValue);
+                        entry.Data = MemoryHelper.AllocateMemory(sizeof(double));
+                        double floatValue = (double) kv.Value.Data;
+                        MemoryHelper.Write<double>(entry.Data, floatValue);
                         break;
                     case MetaDataType.Double:
                         entry.Data = MemoryHelper.AllocateMemory(sizeof(double));
@@ -139,7 +139,7 @@ namespace Assimp
                         data = MemoryHelper.Read<bool>(entry.Data);
                         break;
                     case MetaDataType.Float:
-                        data = MemoryHelper.Read<float>(entry.Data);
+                        data = MemoryHelper.Read<double>(entry.Data);
                         break;
                     case MetaDataType.Double:
                         data = MemoryHelper.Read<double>(entry.Data);
@@ -219,7 +219,7 @@ namespace Assimp
                         dataTypeType = typeof(bool);
                         break;
                     case MetaDataType.Float:
-                        dataTypeType = typeof(float);
+                        dataTypeType = typeof(double);
                         break;
                     case MetaDataType.Double:
                         dataTypeType = typeof(double);

@@ -55,7 +55,7 @@ namespace Assimp
         /// <summary>
         /// Gets the blend factor.
         /// </summary>
-        public float BlendFactor;
+        public double BlendFactor;
 
         /// <summary>
         /// Gets the texture operation.
@@ -90,7 +90,7 @@ namespace Assimp
         /// <param name="wrapModeU">Texture wrap mode for U coordinate</param>
         /// <param name="wrapModeV">Texture wrap mode for V coordinate</param>
         /// <param name="flags">Misc flags</param>
-        public TextureSlot(string filePath, TextureType typeSemantic, int texIndex, TextureMapping mapping, int uvIndex, float blendFactor,
+        public TextureSlot(string filePath, TextureType typeSemantic, int texIndex, TextureMapping mapping, int uvIndex, double blendFactor,
             TextureOperation texOp, TextureWrapMode wrapModeU, TextureWrapMode wrapModeV, int flags)
         {
             FilePath = (filePath == null) ? string.Empty : filePath;

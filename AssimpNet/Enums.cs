@@ -45,7 +45,7 @@ namespace Assimp
         UInt64 = 2,
 
         /// <summary>
-        /// Metadata is a float.
+        /// Metadata is a double.
         /// </summary>
         Float = 3,
 

@@ -224,7 +224,7 @@ namespace Assimp
         /// <summary>
         /// Gets the opacity. Default value is 1.0f.
         /// </summary>
-        public float Opacity
+        public double Opacity
         {
             get
             {
@@ -258,7 +258,7 @@ namespace Assimp
         /// <summary>
         /// Gets the transparency factor.  This is used to make a surface more or less opaque (0 = opaque, 1 = transparent). Default value is 0.0f.
         /// </summary>
-        public float TransparencyFactor
+        public double TransparencyFactor
         {
             get
             {
@@ -292,7 +292,7 @@ namespace Assimp
         /// <summary>
         /// Gets the bump scaling. Default value is 0.0f;
         /// </summary>
-        public float BumpScaling
+        public double BumpScaling
         {
             get
             {
@@ -326,7 +326,7 @@ namespace Assimp
         /// <summary>
         /// Gets the shininess. Default value is 0.0f;
         /// </summary>
-        public float Shininess
+        public double Shininess
         {
             get
             {
@@ -360,7 +360,7 @@ namespace Assimp
         /// <summary>
         /// Gets the shininess strength. Default vaulue is 1.0f.
         /// </summary>
-        public float ShininessStrength
+        public double ShininessStrength
         {
             get
             {
@@ -395,7 +395,7 @@ namespace Assimp
         /// <summary>
         /// Gets the reflectivity. Default value is 0.0f;
         /// </summary>
-        public float Reflectivity
+        public double Reflectivity
         {
             get
             {

@@ -417,12 +417,12 @@ namespace Assimp.Unmanaged
         }
 
         /// <summary>
-        /// Sets a float property value.
+        /// Sets a double property value.
         /// </summary>
         /// <param name="propertyStore">Pointer to property store</param>
         /// <param name="name">Property name</param>
         /// <param name="value">Property value</param>
-        public void SetImportPropertyFloat(IntPtr propertyStore, string name, float value)
+        public void SetImportPropertyFloat(IntPtr propertyStore, string name, double value)
         {
             LoadIfNotLoaded();
 
@@ -508,16 +508,16 @@ namespace Assimp.Unmanaged
         }
 
         /// <summary>
-        /// Retrieves an array of float values with the specific key from the material.
+        /// Retrieves an array of double values with the specific key from the material.
         /// </summary>
         /// <param name="mat">Material to retrieve the data from</param>
         /// <param name="key">Ai mat key (base) name to search for</param>
         /// <param name="texType">Texture Type semantic, always zero for non-texture properties</param>
         /// <param name="texIndex">Texture index, always zero for non-texture properties</param>
         /// <param name="floatCount">The maximum number of floats to read. This may not accurately describe the data returned, as it may not exist or be smaller. If this value is less than
-        /// the available floats, then only the requested number is returned (e.g. 1 or 2 out of a 4 float array).</param>
-        /// <returns>The float array, if it exists</returns>
-        public float[] GetMaterialFloatArray(ref AiMaterial mat, string key, TextureType texType, uint texIndex, uint floatCount)
+        /// the available floats, then only the requested number is returned (e.g. 1 or 2 out of a 4 double array).</param>
+        /// <returns>The double array, if it exists</returns>
+        public double[] GetMaterialFloatArray(ref AiMaterial mat, string key, TextureType texType, uint texIndex, uint floatCount)
         {
             LoadIfNotLoaded();
 
@@ -528,11 +528,11 @@ namespace Assimp.Unmanaged
             {
                 ptr = MemoryHelper.AllocateMemory(IntPtr.Size);
                 ReturnCode code = func(ref mat, key, (uint)texType, texIndex, ptr, ref floatCount);
-                float[] array = null;
+                double[] array = null;
                 if (code == ReturnCode.Success && floatCount > 0)
                 {
-                    array = new float[floatCount];
-                    MemoryHelper.Read<float>(ptr, array, 0, (int)floatCount);
+                    array = new double[floatCount];
+                    MemoryHelper.Read<double>(ptr, array, 0, (int)floatCount);
                 }
                 return array;
             }
@@ -553,7 +553,7 @@ namespace Assimp.Unmanaged
         /// <param name="texType">Texture Type semantic, always zero for non-texture properties</param>
         /// <param name="texIndex">Texture index, always zero for non-texture properties</param>
         /// <param name="intCount">The maximum number of integers to read. This may not accurately describe the data returned, as it may not exist or be smaller. If this value is less than
-        /// the available integers, then only the requested number is returned (e.g. 1 or 2 out of a 4 float array).</param>
+        /// the available integers, then only the requested number is returned (e.g. 1 or 2 out of a 4 double array).</param>
         /// <returns>The integer array, if it exists</returns>
         public int[] GetMaterialIntegerArray(ref AiMaterial mat, string key, TextureType texType, uint texIndex, uint intCount)
         {
@@ -659,7 +659,7 @@ namespace Assimp.Unmanaged
             AiString str;
             TextureMapping mapping;
             uint uvIndex;
-            float blendFactor;
+            double blendFactor;
             TextureOperation texOp;
             TextureWrapMode[] wrapModes = new TextureWrapMode[2];
             uint flags;
@@ -690,7 +690,7 @@ namespace Assimp.Unmanaged
             AiString str;
             TextureMapping mapping;
             uint uvIndex;
-            float blendFactor;
+            double blendFactor;
             TextureOperation texOp;
             TextureWrapMode[] wrapModes = new TextureWrapMode[2];
             uint flags;
@@ -1270,7 +1270,7 @@ namespace Assimp.Unmanaged
             public delegate void aiSetImportPropertyInteger(IntPtr propertyStore, [In, MarshalAs(UnmanagedType.LPUTF8Str)] string name, int value);
 
             [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiSetImportPropertyFloat)]
-            public delegate void aiSetImportPropertyFloat(IntPtr propertyStore, [In, MarshalAs(UnmanagedType.LPUTF8Str)] string name, float value);
+            public delegate void aiSetImportPropertyFloat(IntPtr propertyStore, [In, MarshalAs(UnmanagedType.LPUTF8Str)] string name, double value);
 
             [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiSetImportPropertyString)]
             public delegate void aiSetImportPropertyString(IntPtr propertyStore, [In, MarshalAs(UnmanagedType.LPUTF8Str)] string name, ref AiString value);
@@ -1298,7 +1298,7 @@ namespace Assimp.Unmanaged
             public delegate ReturnCode aiGetMaterialString(ref AiMaterial mat, [In, MarshalAs(UnmanagedType.LPUTF8Str)] string key, uint texType, uint texIndex, out AiString str);
 
             [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiGetMaterialTexture)]
-            public delegate ReturnCode aiGetMaterialTexture(ref AiMaterial mat, TextureType type, uint index, out AiString path, out TextureMapping mapping, out uint uvIndex, out float blendFactor, out TextureOperation textureOp, [In, Out] TextureWrapMode[] wrapModes, out uint flags);
+            public delegate ReturnCode aiGetMaterialTexture(ref AiMaterial mat, TextureType type, uint index, out AiString path, out TextureMapping mapping, out uint uvIndex, out double blendFactor, out TextureOperation textureOp, [In, Out] TextureWrapMode[] wrapModes, out uint flags);
 
             [UnmanagedFunctionPointer(CallingConvention.Cdecl), UnmanagedFunctionName(FunctionNames.aiGetMaterialTextureCount)]
             public delegate uint aiGetMaterialTextureCount(ref AiMaterial mat, TextureType type);

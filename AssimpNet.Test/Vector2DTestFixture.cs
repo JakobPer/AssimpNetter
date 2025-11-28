@@ -32,7 +32,7 @@ namespace Assimp.Test
         [Test]
         public void TestIndexer()
         {
-            float x = 1, y = 2;
+            double x = 1, y = 2;
             Vector2D v = new Vector2D();
             v[0] = x;
             v[1] = y;
@@ -43,7 +43,7 @@ namespace Assimp.Test
         [Test]
         public void TestSet()
         {
-            float x = 10.5f, y = 109.21f;
+            double x = 10.5f, y = 109.21f;
             Vector2D v = new Vector2D();
             v.Set(x, y);
 
@@ -53,8 +53,8 @@ namespace Assimp.Test
         [Test]
         public void TestEquals()
         {
-            float x = 1, y = 2;
-            float x2 = 3, y2 = 4;
+            double x = 1, y = 2;
+            double x2 = 3, y2 = 4;
 
             Vector2D v1 = new Vector2D(x, y);
             Vector2D v2 = new Vector2D(x, y);
@@ -80,25 +80,25 @@ namespace Assimp.Test
         [Test]
         public void TestLength()
         {
-            float x = -62, y = 5;
+            double x = -62, y = 5;
 
             Vector2D v = new Vector2D(x, y);
-            ClassicAssert.AreEqual((float)Math.Sqrt(x * x + y * y), v.Length(), "Testing v.Length()");
+            ClassicAssert.AreEqual((double)Math.Sqrt(x * x + y * y), v.Length(), "Testing v.Length()");
         }
 
         [Test]
         public void TestLengthSquared()
         {
-            float x = -5, y = 25f;
+            double x = -5, y = 25f;
 
             Vector2D v = new Vector2D(x, y);
-            ClassicAssert.AreEqual((float)(x * x + y * y), v.LengthSquared(), "Testing v.LengthSquared()");
+            ClassicAssert.AreEqual((double)(x * x + y * y), v.LengthSquared(), "Testing v.LengthSquared()");
         }
 
         [Test]
         public void TestNegate()
         {
-            float x = 2, y = 5;
+            double x = 2, y = 5;
 
             Vector2D v = new Vector2D(x, y);
             v.Negate();
@@ -108,10 +108,10 @@ namespace Assimp.Test
         [Test]
         public void TestNormalize()
         {
-            float x = 5, y = 12;
+            double x = 5, y = 12;
             Vector2D v = new Vector2D(x, y);
             v.Normalize();
-            float invLength = 1.0f / (float)System.Math.Sqrt((x * x) + (y * y));
+            double invLength = 1.0f / (double)System.Math.Sqrt((x * x) + (y * y));
             x *= invLength;
             y *= invLength;
 
@@ -121,10 +121,10 @@ namespace Assimp.Test
         [Test]
         public void TestOpAdd()
         {
-            float x1 = 2, y1 = 5;
-            float x2 = 10, y2 = 15;
-            float x = x1 + x2;
-            float y = y1 + y2;
+            double x1 = 2, y1 = 5;
+            double x2 = 10, y2 = 15;
+            double x = x1 + x2;
+            double y = y1 + y2;
 
             Vector2D v1 = new Vector2D(x1, y1);
             Vector2D v2 = new Vector2D(x2, y2);
@@ -137,10 +137,10 @@ namespace Assimp.Test
         [Test]
         public void TestOpSubtract()
         {
-            float x1 = 2, y1 = 5;
-            float x2 = 10, y2 = 15;
-            float x = x1 - x2;
-            float y = y1 - y2;
+            double x1 = 2, y1 = 5;
+            double x2 = 10, y2 = 15;
+            double x = x1 - x2;
+            double y = y1 - y2;
 
             Vector2D v1 = new Vector2D(x1, y1);
             Vector2D v2 = new Vector2D(x2, y2);
@@ -153,7 +153,7 @@ namespace Assimp.Test
         [Test]
         public void TestOpNegate()
         {
-            float x = 22, y = 75;
+            double x = 22, y = 75;
 
             Vector2D v = -(new Vector2D(x, y));
 
@@ -163,10 +163,10 @@ namespace Assimp.Test
         [Test]
         public void TestOpMultiply()
         {
-            float x1 = 2, y1 = 5;
-            float x2 = 10, y2 = 15;
-            float x = x1 * x2;
-            float y = y1 * y2;
+            double x1 = 2, y1 = 5;
+            double x2 = 10, y2 = 15;
+            double x = x1 * x2;
+            double y = y1 * y2;
 
             Vector2D v1 = new Vector2D(x1, y1);
             Vector2D v2 = new Vector2D(x2, y2);
@@ -179,11 +179,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpMultiplyByScalar()
         {
-            float x1 = 2, y1 = 5;
-            float scalar = 25;
+            double x1 = 2, y1 = 5;
+            double scalar = 25;
 
-            float x = x1 * scalar;
-            float y = y1 * scalar;
+            double x = x1 * scalar;
+            double y = y1 * scalar;
 
             Vector2D v1 = new Vector2D(x1, y1);
 
@@ -199,11 +199,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpDivide()
         {
-            float x1 = 105f, y1 = 4.5f;
-            float x2 = 22f, y2 = 25.2f;
+            double x1 = 105f, y1 = 4.5f;
+            double x2 = 22f, y2 = 25.2f;
 
-            float x = x1 / x2;
-            float y = y1 / y2;
+            double x = x1 / x2;
+            double y = y1 / y2;
 
             Vector2D v1 = new Vector2D(x1, y1);
             Vector2D v2 = new Vector2D(x2, y2);
@@ -216,11 +216,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpDivideByFactor()
         {
-            float x1 = 55f, y1 = 2f;
-            float divisor = 5f;
+            double x1 = 55f, y1 = 2f;
+            double divisor = 5f;
 
-            float x = x1 / divisor;
-            float y = y1 / divisor;
+            double x = x1 / divisor;
+            double y = y1 / divisor;
 
             Vector2D v = new Vector2D(x1, y1) / divisor;
 

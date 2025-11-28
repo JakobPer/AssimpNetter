@@ -82,72 +82,72 @@ namespace Assimp.Unmanaged
         public const string BLEND_FUNC = "$mat.blend,0,0";
 
         /// <summary>
-        /// Opacity (float)
+        /// Opacity (double)
         /// </summary>
         public const string OPACITY_BASE = "$mat.opacity";
 
         /// <summary>
-        /// Opacity (float)
+        /// Opacity (double)
         /// </summary>
         public const string OPACITY = "$mat.opacity,0,0";
 
         /// <summary>
-        /// Transparency Factor (float)
+        /// Transparency Factor (double)
         /// </summary>
         public const string TRANSPARENCYFACTOR_BASE = "$mat.transparencyfactor";
 
         /// <summary>
-        /// Transparency Factor (float)
+        /// Transparency Factor (double)
         /// </summary>
         public const string TRANSPARENCYFACTOR = "$mat.transparencyfactor,0,0";
 
         /// <summary>
-        /// Bumpscaling (float)
+        /// Bumpscaling (double)
         /// </summary>
         public const string BUMPSCALING_BASE = "$mat.bumpscaling";
 
         /// <summary>
-        /// Bumpscaling (float)
+        /// Bumpscaling (double)
         /// </summary>
         public const string BUMPSCALING = "$mat.bumpscaling,0,0";
 
         /// <summary>
-        /// Shininess (float)
+        /// Shininess (double)
         /// </summary>
         public const string SHININESS_BASE = "$mat.shininess";
 
         /// <summary>
-        /// Shininess (float)
+        /// Shininess (double)
         /// </summary>
         public const string SHININESS = "$mat.shininess,0,0";
 
         /// <summary>
-        /// Reflectivity (float)
+        /// Reflectivity (double)
         /// </summary>
         public const string REFLECTIVITY_BASE = "$mat.reflectivity";
 
         /// <summary>
-        /// Reflectivity (float)
+        /// Reflectivity (double)
         /// </summary>
         public const string REFLECTIVITY = "$mat.reflectivity,0,0";
 
         /// <summary>
-        /// Shininess strength (float)
+        /// Shininess strength (double)
         /// </summary>
         public const string SHININESS_STRENGTH_BASE = "$mat.shinpercent";
 
         /// <summary>
-        /// Shininess strength (float)
+        /// Shininess strength (double)
         /// </summary>
         public const string SHININESS_STRENGTH = "$mat.shinpercent,0,0";
 
         /// <summary>
-        /// Refracti (float)
+        /// Refracti (double)
         /// </summary>
         public const string REFRACTI_BASE = "$mat.refracti";
 
         /// <summary>
-        /// Refracti (float)
+        /// Refracti (double)
         /// </summary>
         public const string REFRACTI = "$mat.refracti,0,0";
 

@@ -37,22 +37,22 @@ namespace Assimp
         /// <summary>
         /// X component of the normal vector.
         /// </summary>
-        public float A;
+        public double A;
 
         /// <summary>
         /// Y component of the normal vector.
         /// </summary>
-        public float B;
+        public double B;
 
         /// <summary>
         /// Z component of the normal vector.
         /// </summary>
-        public float C;
+        public double C;
 
         /// <summary>
         /// Distance from the origin to the plane along the normal vector.
         /// </summary>
-        public float D;
+        public double D;
 
         /// <summary>
         /// Constructs a new Plane.
@@ -61,7 +61,7 @@ namespace Assimp
         /// <param name="b">Y component of the normal vector.</param>
         /// <param name="c">Z component of the normal vector.</param>
         /// <param name="d">Distance from the origin to the plane along the normal vector.</param>
-        public Plane(float a, float b, float c, float d)
+        public Plane(double a, double b, double c, double d)
         {
             A = a;
             B = b;

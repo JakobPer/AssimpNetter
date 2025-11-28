@@ -101,7 +101,7 @@ namespace Assimp.Unmanaged
         /// aiCamera**, cameras in the scene.
         /// </summary>
         public IntPtr Cameras;
-        
+
         /// <summary>
         /// aiMetadata*, The global metadata assigned to the scene itself.
         /// 
@@ -275,7 +275,7 @@ namespace Assimp.Unmanaged
         /// Max_Value is defined as <see cref="AiDefines.AI_MAX_NUMBER_OF_TEXTURECOORDS"/>.
         /// </summary>
         public AiMeshUVComponentArray NumUVComponents;
- 
+
         /// <summary>
         /// aiFace*, array of faces.
         /// </summary>
@@ -356,7 +356,7 @@ namespace Assimp.Unmanaged
         /// aiTexel*, array of texel data.
         /// </summary>
         public IntPtr Data;
-        
+
         /// <summary>
         /// Texture original filename.
         /// </summary>
@@ -373,10 +373,10 @@ namespace Assimp.Unmanaged
 
             int count = hintChars.Length;
 
-            fixed(sbyte* charPtr = FormatHint)
+            fixed (sbyte* charPtr = FormatHint)
             {
-                for(int i = 0; i < maxLen; i++)
-                    charPtr[i] = (sbyte) ((count > i) ? hintChars[i] : '\0');
+                for (int i = 0; i < maxLen; i++)
+                    charPtr[i] = (sbyte)((count > i) ? hintChars[i] : '\0');
             }
         }
 
@@ -860,9 +860,9 @@ namespace Assimp.Unmanaged
         /// <returns>AiString string data</returns>
         public unsafe static string GetString(in AiString aiStr)
         {
-            int length = (int) aiStr.Length;
+            int length = (int)aiStr.Length;
 
-            if(length > 0)
+            if (length > 0)
             {
                 byte[] copy = new byte[length];
 
@@ -895,28 +895,28 @@ namespace Assimp.Unmanaged
         /// <returns>True if the operation was successful, false otherwise.</returns>
         public unsafe bool SetString(string data)
         {
-            if(string.IsNullOrEmpty(data))
+            if (string.IsNullOrEmpty(data))
             {
                 Length = 0;
-                fixed(byte* bytePtr = Data)
+                fixed (byte* bytePtr = Data)
                     MemoryHelper.ClearMemory(new IntPtr(bytePtr), AiDefines.MAX_LENGTH);
 
                 return true;
             }
 
             //Note: aiTypes.h specifies aiString is UTF-8 encoded string.
-            if(Encoding.UTF8.GetByteCount(data) <= AiDefines.MAX_LENGTH)
+            if (Encoding.UTF8.GetByteCount(data) <= AiDefines.MAX_LENGTH)
             {
                 byte[] copy = Encoding.UTF8.GetBytes(data);
 
                 //Write bytes to data field
-                if(copy.Length > 0)
+                if (copy.Length > 0)
                 {
-                    fixed(byte* bytePtr = Data)
+                    fixed (byte* bytePtr = Data)
                         MemoryHelper.Write<byte>(new IntPtr(bytePtr), copy, 0, copy.Length);
                 }
 
-                Length = (uint) copy.Length;
+                Length = (uint)copy.Length;
 
                 return true;
             }
@@ -1009,7 +1009,7 @@ namespace Assimp.Unmanaged
         /// Anim Mesh name 
         /// </summary>
         public AiString Name;
-        
+
         /// <summary>
         /// aiVector3D*, replacement position array.
         /// </summary>
@@ -1046,7 +1046,7 @@ namespace Assimp.Unmanaged
         public uint NumVertices;
 
         /// <summary>
-        /// float, weight of the AnimMesh.
+        /// double, weight of the AnimMesh.
         /// </summary>
         public float Weight;
     }
@@ -1223,7 +1223,7 @@ namespace Assimp.Unmanaged
         public IntPtr UserData;
     }
 
-#region Delegates
+    #region Delegates
 
     /// <summary>
     /// Callback delegate for Assimp's LogStream.
@@ -1299,9 +1299,9 @@ namespace Assimp.Unmanaged
     public delegate void AiFileCloseProc(IntPtr fileIO, IntPtr file);
 
 
-#endregion
+    #endregion
 
-#region Collections
+    #region Collections
 
     /// <summary>
     /// Fixed length array for representing the color channels of a mesh. Length is equal
@@ -1326,7 +1326,7 @@ namespace Assimp.Unmanaged
         {
             get
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         return m_ptr0;
@@ -1350,7 +1350,7 @@ namespace Assimp.Unmanaged
             }
             set
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         m_ptr0 = value;
@@ -1404,7 +1404,7 @@ namespace Assimp.Unmanaged
         {
             get
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         return m_ptr0;
@@ -1428,7 +1428,7 @@ namespace Assimp.Unmanaged
             }
             set
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         m_ptr0 = value;
@@ -1482,7 +1482,7 @@ namespace Assimp.Unmanaged
         {
             get
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         return m_uvw0;
@@ -1506,7 +1506,7 @@ namespace Assimp.Unmanaged
             }
             set
             {
-                switch(index)
+                switch (index)
                 {
                     case 0:
                         m_uvw0 = value;
@@ -1537,5 +1537,5 @@ namespace Assimp.Unmanaged
         }
     }
 
-#endregion
+    #endregion
 }

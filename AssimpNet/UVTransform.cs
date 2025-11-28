@@ -51,6 +51,6 @@ namespace Assimp
         /// radians. The rotation center is 0.5f|0.5f and the
         /// default value is zero.
         /// </summary>
-        public float Rotation;
+        public double Rotation;
     }
 }

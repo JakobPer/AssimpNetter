@@ -32,7 +32,7 @@ namespace Assimp.Test
         [Test]
         public void TestIndexer()
         {
-            float x = 1, y = 2, z = 3;
+            double x = 1, y = 2, z = 3;
             Vector3D v = new Vector3D();
             v[0] = x;
             v[1] = y;
@@ -45,7 +45,7 @@ namespace Assimp.Test
         [Test]
         public void TestSet()
         {
-            float x = 10.5f, y = 109.21f, z = 100;
+            double x = 10.5f, y = 109.21f, z = 100;
             Vector3D v = new Vector3D();
             v.Set(x, y, z);
 
@@ -55,8 +55,8 @@ namespace Assimp.Test
         [Test]
         public void TestEquals()
         {
-            float x = 1, y = 2, z = 5;
-            float x2 = 3, y2 = 4, z2 = 10;
+            double x = 1, y = 2, z = 5;
+            double x2 = 3, y2 = 4, z2 = 10;
 
             Vector3D v1 = new Vector3D(x, y, z);
             Vector3D v2 = new Vector3D(x, y, z);
@@ -82,25 +82,25 @@ namespace Assimp.Test
         [Test]
         public void TestLength()
         {
-            float x = -62, y = 5, z = 10;
+            double x = -62, y = 5, z = 10;
 
             Vector3D v = new Vector3D(x, y, z);
-            ClassicAssert.AreEqual((float)Math.Sqrt(x * x + y * y + z * z), v.Length(), "Testing v.Length()");
+            ClassicAssert.AreEqual((double)Math.Sqrt(x * x + y * y + z * z), v.Length(), "Testing v.Length()");
         }
 
         [Test]
         public void TestLengthSquared()
         {
-            float x = -5, y = 25f, z = 7;
+            double x = -5, y = 25f, z = 7;
 
             Vector3D v = new Vector3D(x, y, z);
-            ClassicAssert.AreEqual((float)(x * x + y * y + z * z), v.LengthSquared(), "Testing v.LengthSquared()");
+            ClassicAssert.AreEqual((double)(x * x + y * y + z * z), v.LengthSquared(), "Testing v.LengthSquared()");
         }
 
         [Test]
         public void TestNegate()
         {
-            float x = 2, y = 5, z = -5;
+            double x = 2, y = 5, z = -5;
 
             Vector3D v = new Vector3D(x, y, z);
             v.Negate();
@@ -110,10 +110,10 @@ namespace Assimp.Test
         [Test]
         public void TestNormalize()
         {
-            float x = 5, y = 12, z = 2;
+            double x = 5, y = 12, z = 2;
             Vector3D v = new Vector3D(x, y, z);
             v.Normalize();
-            float invLength = 1.0f / (float)System.Math.Sqrt((x * x) + (y * y) + (z * z));
+            double invLength = 1.0f / (double)System.Math.Sqrt((x * x) + (y * y) + (z * z));
             x *= invLength;
             y *= invLength;
             z *= invLength;
@@ -124,11 +124,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpAdd()
         {
-            float x1 = 2, y1 = 5, z1 = 10;
-            float x2 = 10, y2 = 15, z2 = 5.5f;
-            float x = x1 + x2;
-            float y = y1 + y2;
-            float z = z1 + z2;
+            double x1 = 2, y1 = 5, z1 = 10;
+            double x2 = 10, y2 = 15, z2 = 5.5f;
+            double x = x1 + x2;
+            double y = y1 + y2;
+            double z = z1 + z2;
 
             Vector3D v1 = new Vector3D(x1, y1, z1);
             Vector3D v2 = new Vector3D(x2, y2, z2);
@@ -141,11 +141,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpSubtract()
         {
-            float x1 = 2, y1 = 5, z1 = 10;
-            float x2 = 10, y2 = 15, z2 = 5.5f;
-            float x = x1 - x2;
-            float y = y1 - y2;
-            float z = z1 - z2;
+            double x1 = 2, y1 = 5, z1 = 10;
+            double x2 = 10, y2 = 15, z2 = 5.5f;
+            double x = x1 - x2;
+            double y = y1 - y2;
+            double z = z1 - z2;
 
             Vector3D v1 = new Vector3D(x1, y1, z1);
             Vector3D v2 = new Vector3D(x2, y2, z2);
@@ -158,7 +158,7 @@ namespace Assimp.Test
         [Test]
         public void TestOpNegate()
         {
-            float x = 22, y = 75, z = -5;
+            double x = 22, y = 75, z = -5;
 
             Vector3D v = -(new Vector3D(x, y, z));
 
@@ -168,11 +168,11 @@ namespace Assimp.Test
         [Test]
         public void TestOpMultiply()
         {
-            float x1 = 2, y1 = 5, z1 = 10;
-            float x2 = 10, y2 = 15, z2 = 5.5f;
-            float x = x1 * x2;
-            float y = y1 * y2;
-            float z = z1 * z2;
+            double x1 = 2, y1 = 5, z1 = 10;
+            double x2 = 10, y2 = 15, z2 = 5.5f;
+            double x = x1 * x2;
+            double y = y1 * y2;
+            double z = z1 * z2;
 
             Vector3D v1 = new Vector3D(x1, y1, z1);
             Vector3D v2 = new Vector3D(x2, y2, z2);
@@ -185,12 +185,12 @@ namespace Assimp.Test
         [Test]
         public void TestOpMultiplyByScalar()
         {
-            float x1 = 2, y1 = 5, z1 = -10;
-            float scalar = 25;
+            double x1 = 2, y1 = 5, z1 = -10;
+            double scalar = 25;
 
-            float x = x1 * scalar;
-            float y = y1 * scalar;
-            float z = z1 * scalar;
+            double x = x1 * scalar;
+            double y = y1 * scalar;
+            double z = z1 * scalar;
 
             Vector3D v1 = new Vector3D(x1, y1, z1);
 
@@ -206,12 +206,12 @@ namespace Assimp.Test
         [Test]
         public void TestOpDivide()
         {
-            float x1 = 105f, y1 = 4.5f, z1 = -20;
-            float x2 = 22f, y2 = 25.2f, z2 = 10;
+            double x1 = 105f, y1 = 4.5f, z1 = -20;
+            double x2 = 22f, y2 = 25.2f, z2 = 10;
 
-            float x = x1 / x2;
-            float y = y1 / y2;
-            float z = z1 / z2;
+            double x = x1 / x2;
+            double y = y1 / y2;
+            double z = z1 / z2;
 
             Vector3D v1 = new Vector3D(x1, y1, z1);
             Vector3D v2 = new Vector3D(x2, y2, z2);
@@ -224,12 +224,12 @@ namespace Assimp.Test
         [Test]
         public void TestOpDivideByFactor()
         {
-            float x1 = 55f, y1 = 2f, z1 = 50f;
-            float divisor = 5f;
+            double x1 = 55f, y1 = 2f, z1 = 50f;
+            double divisor = 5f;
 
-            float x = x1 / divisor;
-            float y = y1 / divisor;
-            float z = z1 / divisor;
+            double x = x1 / divisor;
+            double y = y1 / divisor;
+            double z = z1 / divisor;
 
             Vector3D v = new Vector3D(x1, y1, z1) / divisor;
 
@@ -239,20 +239,20 @@ namespace Assimp.Test
         [Test]
         public void TestOpTransformBy3x3()
         {
-            float m11 = 2, m12 = .2f, m13 = 0;
-            float m21 = .2f, m22 = 2, m23 = 0;
-            float m31 = 0, m32 = 0, m33 = 2;
+            double m11 = 2, m12 = .2f, m13 = 0;
+            double m21 = .2f, m22 = 2, m23 = 0;
+            double m31 = 0, m32 = 0, m33 = 2;
 
-            float x1 = 2, y1 = 2.5f, z1 = 52;
+            double x1 = 2, y1 = 2.5f, z1 = 52;
 
             Matrix3x3 m = new Matrix3x3(m11, m12, m13, m21, m22, m23, m31, m32, m33);
             Vector3D v = new Vector3D(x1, y1, z1);
 
             Vector3D transformedV = m * v;
 
-            float x = (x1 * m11) + (y1 * m12) + (z1 * m13);
-            float y = (x1 * m21) + (y1 * m22) + (z1 * m23);
-            float z = (x1 * m31) + (y1 * m32) + (z1 * m33);
+            double x = (x1 * m11) + (y1 * m12) + (z1 * m13);
+            double y = (x1 * m21) + (y1 * m22) + (z1 * m23);
+            double z = (x1 * m31) + (y1 * m32) + (z1 * m33);
 
             TestHelper.AssertEquals(x, y, z, transformedV, "Testing vector transform by Matrix 3x3");
         }
@@ -260,21 +260,21 @@ namespace Assimp.Test
         [Test]
         public void TestOpTransformBy4x4()
         {
-            float m11 = 2, m12 = .2f, m13 = 0, m14 = 0;
-            float m21 = .2f, m22 = 2, m23 = 0, m24 = 0;
-            float m31 = 0, m32 = 0, m33 = 2, m34 = 0;
-            float m41 = 2, m42 = 3, m43 = 5, m44 = 1;
+            double m11 = 2, m12 = .2f, m13 = 0, m14 = 0;
+            double m21 = .2f, m22 = 2, m23 = 0, m24 = 0;
+            double m31 = 0, m32 = 0, m33 = 2, m34 = 0;
+            double m41 = 2, m42 = 3, m43 = 5, m44 = 1;
 
-            float x1 = 2, y1 = 2.5f, z1 = 52;
+            double x1 = 2, y1 = 2.5f, z1 = 52;
 
             Matrix4x4 m = new Matrix4x4(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
             Vector3D v = new Vector3D(x1, y1, z1);
 
             Vector3D transformedV = m * v;
 
-            float x = (x1 * m11) + (y1 * m12) + (z1 * m13) + m14;
-            float y = (x1 * m21) + (y1 * m22) + (z1 * m23) + m24;
-            float z = (x1 * m31) + (y1 * m32) + (z1 * m33) + m34;
+            double x = (x1 * m11) + (y1 * m12) + (z1 * m13) + m14;
+            double y = (x1 * m21) + (y1 * m22) + (z1 * m23) + m24;
+            double z = (x1 * m31) + (y1 * m32) + (z1 * m33) + m34;
 
             TestHelper.AssertEquals(x, y, z, transformedV, "Testing vector transform by Matrix 4x4");
         }

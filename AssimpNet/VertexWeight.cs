@@ -31,5 +31,5 @@ namespace Assimp
     /// <param name="Weight">Strength of the influence in range of (0...1). All influences
     /// from all bones at one vertex amounts to 1.</param>
     [StructLayout(LayoutKind.Sequential)]
-    public record struct VertexWeight(int VertexID, float Weight);
+    public record struct VertexWeight(int VertexID, double Weight);
 }

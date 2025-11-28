@@ -20,8 +20,8 @@
 * THE SOFTWARE.
 */
 
-using System;
 using NUnit.Framework;
+using System;
 using TK = OpenTK;
 
 namespace Assimp.Test
@@ -32,14 +32,14 @@ namespace Assimp.Test
         [Test]
         public void TestIndexer()
         {
-            float[] values = new float[] { 1.0f, 2.0f, 3.0f, 0.0f, -5.0f, .5f, .3f, .35f, .025f };
+            double[] values = new double[] { 1.0f, 2.0f, 3.0f, 0.0f, -5.0f, .5f, .3f, .35f, .025f };
 
             Matrix3x3 m = Matrix3x3.Identity;
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    float value = values[(i * 3) + j];
+                    double value = values[(i * 3) + j];
                     //Matrix indices are one-based.
                     m[i + 1, j + 1] = value;
                     TestHelper.AssertEquals(value, m[i + 1, j + 1], $"Testing [{i + 1},{j + 1}] indexer.");
@@ -81,7 +81,7 @@ namespace Assimp.Test
             Matrix3x3 m = Matrix3x3.FromRotationX(x) * Matrix3x3.FromRotationY(y);
 
             float tkDet = tkM.Determinant;
-            float det = m.Determinant();
+            double det = m.Determinant();
             TestHelper.AssertEquals(tkDet, det, "Testing determinant");
         }
 
@@ -173,7 +173,7 @@ namespace Assimp.Test
             Vector3D axis = new Vector3D(.25f, .5f, 0.0f);
             axis.Normalize();
 
-            float angle = (float) Math.PI;
+            double angle = (double)Math.PI;
 
             Quaternion q = new Quaternion(axis, angle);
             Matrix3x3 m = q.GetMatrix();

@@ -133,17 +133,17 @@ namespace Assimp.Configs
     }
 
     /// <summary>
-    /// Describes a float configuration property.
+    /// Describes a double configuration property.
     /// </summary>
     public class FloatPropertyConfig : PropertyConfig
     {
-        private float m_value;
-        private float m_defaultValue;
+        private double m_value;
+        private double m_defaultValue;
 
         /// <summary>
         /// Gets the property value.
         /// </summary>
-        public float Value
+        public double Value
         {
             get => m_value;
             set => m_value = value;
@@ -152,14 +152,14 @@ namespace Assimp.Configs
         /// <summary>
         /// Gets the default property value.
         /// </summary>
-        public float DefaultValue => m_defaultValue;
+        public double DefaultValue => m_defaultValue;
 
         /// <summary>
         /// Constructs a new FloatPropertyConfig.
         /// </summary>
         /// <param name="name">Name of the property</param>
         /// <param name="value">Property value</param>
-        public FloatPropertyConfig(string name, float value)
+        public FloatPropertyConfig(string name, double value)
             : this(name, value, 0.0f) { }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Assimp.Configs
         /// <param name="name">Name of the property</param>
         /// <param name="value">Property value</param>
         /// <param name="defaultValue">The default property value</param>
-        public FloatPropertyConfig(string name, float value, float defaultValue)
+        public FloatPropertyConfig(string name, double value, double defaultValue)
             : base(name)
         {
             m_value = value;
@@ -500,7 +500,7 @@ namespace Assimp.Configs
         /// Constructs a new TangentSmoothingAngleConfig.
         /// </summary>
         /// <param name="angle">Smoothing angle, in degrees.</param>
-        public TangentSmoothingAngleConfig(float angle)
+        public TangentSmoothingAngleConfig(double angle)
             : base(TangentSmoothingAngleConfigName, Math.Min(angle, 175.0f), 45.0f) { }
     }
 
@@ -521,7 +521,7 @@ namespace Assimp.Configs
         /// Constructs a new NormalSmoothingAngleConfig.
         /// </summary>
         /// <param name="angle">Smoothing angle, in degrees.</param>
-        public NormalSmoothingAngleConfig(float angle)
+        public NormalSmoothingAngleConfig(double angle)
             : base(NormalSmoothingAngleConfigName, Math.Min(angle, 175.0f), 175.0f) { }
     }
 
@@ -843,7 +843,7 @@ namespace Assimp.Configs
         /// Constructs a new AnimationAccuracyConfig.
         /// </summary>
         /// <param name="episilon">Episilon for animation value comparisons.</param>
-        public AnimationAccuracyConfig(float episilon)
+        public AnimationAccuracyConfig(double episilon)
             : base(AnimationAccuracyConfigName, episilon, 0.0f) { }
     }
 
@@ -963,7 +963,7 @@ namespace Assimp.Configs
         /// Constructs a new DeboneThresholdConfig.
         /// </summary>
         /// <param name="threshold">The debone threshold.</param>
-        public DeboneThresholdConfig(float threshold)
+        public DeboneThresholdConfig(double threshold)
             : base(DeboneThresholdConfigName, threshold, 1.0f) { }
     }
 
@@ -1037,7 +1037,7 @@ namespace Assimp.Configs
         /// Constructs a new GlobalScaleConfig.
         /// </summary>
         /// <param name="globalScale">Value to scale the entire scene by.</param>
-        public GlobalScaleConfig(float globalScale)
+        public GlobalScaleConfig(double globalScale)
             : base(GlobalScaleConfigName, globalScale, 1.0f) { }
     }
 
@@ -1055,7 +1055,7 @@ namespace Assimp.Configs
         /// Constructs a new AppScaleConfig.
         /// </summary>
         /// <param name="appScale">Value to scale the global scale by.</param>
-        public AppScaleConfig(float appScale)
+        public AppScaleConfig(double appScale)
             : base(AppScaleConfigName, appScale, 1.0f) { }
     }
 
@@ -1586,7 +1586,7 @@ namespace Assimp.Configs
         /// Constructs a new IFCSmoothingAngleConfig.
         /// </summary>
         /// <param name="angle">Smoothing angle when tessellating curves. Needs to be in the range of [5, 120].</param>
-        public IFCSmoothingAngleConfig(float angle)
+        public IFCSmoothingAngleConfig(double angle)
             : base(IFCSmoothingAngleConfigName, angle, 10.0f) { }
     }
 
@@ -1941,7 +1941,7 @@ namespace Assimp.Configs
         /// <summary>
         /// Constructs a new XFileUseDoublesConfig.
         /// </summary>
-        /// <param name="useDoubles">True if the x file uses 64-bit double values rather than 32-bit float values.</param>
+        /// <param name="useDoubles">True if the x file uses 64-bit double values rather than 32-bit double values.</param>
         public XFileUseDoublesConfig(bool useDoubles)
             : base(XFileUseDoublesConfigName, useDoubles, false) { }
     }
